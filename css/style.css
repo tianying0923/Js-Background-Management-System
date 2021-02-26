@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+/* ---------- 滚动条样式 ---------- */
+
+body::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 5px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* ---------- 圆点-带数字 ---------- */
+
+sup {
+    display: inline-block;
+    text-align: center;
+    line-height: 10px;
+    color: #fff;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
+sup.dot {
+    width: 5px;
+    height: 5px;
+}
+
+sup.dot_num {
+    width: 10px;
+    height: 10px;
+}
+
+
+/* ---------- 下拉列表 ---------- */
+
+.dropdown_wrapper {
+    position: relative;
+}
+
+.dropdown_wrapper .dropdown_show {
+    cursor: pointer;
+}
+
+.dropdown_wrapper .dropdown_hide {
+    width: auto;
+    height: 0;
+    background-color: #fff;
+    position: absolute;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, .15);
+}
+
+.dropdown_wrapper .dropdown_hide li {
+    cursor: pointer;
+    white-space: nowrap;
+    color: #666;
+}
+
+.dropdown_wrapper .dropdown_hide li a {
+    color: #666;
+}
+
+.dropdown_wrapper .dropdown_hide li:hover {
+    color: #66b1ff;
+    background-color: #ecf5ff;
+}
+
+.dropdown_wrapper .dropdown_hide li:hover a,
+.dropdown_wrapper .dropdown_hide li:hover .icon {
+    color: #66b1ff!important;
+}
+
+
+/* ---------- 选项卡 ---------- */
+
+.tab_title_wrapper .swiper-wrapper {
+    background-color: #F5F7FA;
+    border-bottom: 1px solid #E4E7ED;
+    margin: 0;
+}
+
+.tab_title_wrapper .tab_item {
+    cursor: pointer;
+    line-height: 38px;
+    width: auto;
+    padding: 0 20px;
+    border: 1px solid transparent;
+    position: relative;
+    margin-bottom: -1px;
+    color: #909399;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.tab_title_wrapper .tab_item:hover {
+    color: #409EFF;
+}
+
+.tab_title_wrapper .tab_active {
+    color: #409EFF;
+    background-color: #FFF;
+    border-right-color: #DCDFE6;
+    border-left-color: #DCDFE6;
+}
+
+.tab_main_wrapper .swiper-slide {
+    background: #fff;
+    height: initial;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%!important;
+}
+
+
+/* ---------- 下拉列表-选项卡 ---------- */
+
+.dropdown_wrapper .dropdown_hide .tab_title_wrapper .swiper-wrapper {
+    background: #fff;
+    border: none;
+}
+
+.dropdown_wrapper .dropdown_hide .tab_title_wrapper .tab_active {
+    color: #409EFF;
+    background-color: #FFF;
+    border-bottom-color: #409EFF;
+    border-bottom-width: 3px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+}

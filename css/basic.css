@@ -1,0 +1,47 @@
+/*basic*/
+
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+    font-family: Microsoft Yahei, "微软雅黑", Arial;
+    color: #303133;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: #666;
+}
+
+i {
+    font-style: normal;
+}
+
+img {
+    border: 0;
+}
+
+button,
+input,
+textarea,
+select {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+ul,
+ol,
+dl {
+    list-style: none;
+}
+
+.text_align_r {
+    text-align: right;
+    width: 100%;
+}

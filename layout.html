@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/swiper-6.4.5/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./js/layer-v3.2.0/theme/default/layer.css">
+    <link rel="stylesheet" href="./css/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="./css/buttons.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/swiper-6.4.5/swiper-bundle.min.js"></script>
+    <script src="./js/layer-v3.2.0/layer.js"></script>
+    <script src="./js/screenfull.js"></script>
+    <script src="./js/again_load.js"></script>
+    <script src="./js/method_sets.js"></script>
+    <script src="./js/layout.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <div class="header_logo">
+                <a href="#" class="logo_show">show</a>
+                <a href="#" class="logo_hide">hide</a>
+            </div>
+            <div class="header_bar">
+                <div class="header_btn">
+                    <i class="icon fa fa-indent "></i>
+                </div>
+                <ul class="header_menus">
+                    <li class="screenfull_btn">
+                        <i class="icon fa fa-arrows-alt"></i>
+                    </li>
+                    <li class="dropdown_wrapper">
+                        <div class="dropdown_show">
+                            <i class="icon fa fa-cog"></i>
+                        </div>
+                        <ul class="dropdown_hide">
+                            <li class="clear_cache">
+                                <i class="fa fa-times-circle"></i> 清除缓存
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown_wrapper">
+                        <div class="dropdown_show">
+                            <img src="images/head_sculpture.jpg" alt="">
+                            <span>admin</span>
+                        </div>
+                        <ul class="dropdown_hide">
+                            <li>
+                                <i class="fa fa-pencil-square-o"></i> 修改密码
+                            </li>
+                            <li>
+                                <i class="fa fa-sign-in"></i> 退出登录
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown_wrapper">
+                        <div class="dropdown_show">
+                            <i class="icon fa fa-bell-o" aria-hidden="true"></i>
+                            <sup class="dot"></sup>
+                        </div>
+                        <div class="dropdown_hide">
+                            <div class="swiper-container tab_title_wrapper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide tab_item tab_active">
+                                        标题1
+                                    </div>
+                                    <div class="swiper-slide tab_item">
+                                        标题2
+                                    </div>
+                                    <div class="swiper-slide tab_item">
+                                        标题3
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-container tab_main_wrapper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide tab_item">
+                                        内容1
+                                    </div>
+                                    <div class="swiper-slide tab_item">
+                                        内容2
+                                    </div>
+                                    <div class="swiper-slide tab_item">
+                                        内容3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar_btn">
+                        <i class="icon fa fa-bell-o" aria-hidden="true"></i>
+                        <sup class="dot_num">5</sup>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <aside>
+        <div id="nav">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <ul class="swiper-slide nav_wraper">
+
+                        <li class="nav_item">
+                            <div>
+                                <a href="#/component/buttons">
+                                    <i class="icon fa fa-road"></i>
+                                    <span>下拉选项卡</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav_item">
+                            <div>
+                                <a href="#dropdown_tab.1">
+                                    <i class="icon fa fa-road"></i>
+                                    <span>下拉选项卡3</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav_item">
+                            <div>
+                                <a href="#">
+                                    <i class="icon fa fa-road"></i>
+                                    <span>表格</span>
+                                </a>
+                            </div>
+                            <ul class="nav_sub_wrapper">
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#tabs_table">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>表格-选项卡</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#tabs_table_test">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>表格-测试</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#a">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>测试1.1</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#b">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>测试1.2</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>测试1.3</span>
+                                        </a>
+                                    </div>
+                                    <ul class="nav_sub_wrapper">
+                                        <li class="nav_item">
+                                            <div>
+                                                <a href="#c">
+                                                    <i class="icon fa fa-users"></i>
+                                                    <span>测试1.3.1</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="nav_item">
+                                            <div>
+                                                <a href="#">
+                                                    <i class="icon fa fa-users"></i>
+                                                    <span>测试1.3.2</span>
+                                                </a>
+                                            </div>
+                                            <ul class="nav_sub_wrapper">
+                                                <li class="nav_item">
+                                                    <div>
+                                                        <a href="#d">
+                                                            <i class="icon fa fa-users"></i>
+                                                            <span>测试1.3.2.1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li class="nav_item">
+                                                    <div>
+                                                        <a href="#e">
+                                                            <i class="icon fa fa-users"></i>
+                                                            <span>测试测试测试测试测试测试测试1.3.2.2</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li class="nav_item">
+                                                    <div>
+                                                        <a href="#">
+                                                            <i class="icon fa fa-users"></i>
+                                                            <span>测试1.3.2.3</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav_item">
+                            <div>
+                                <a href="#">
+                                    <i class="icon fa fa-users"></i>
+                                    <span>测试2</span>
+                                </a>
+                            </div>
+                            <ul class="nav_sub_wrapper">
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#f">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>测试2.1</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav_item">
+                                    <div>
+                                        <a href="#">
+                                            <i class="icon fa fa-users"></i>
+                                            <span>测试2.2</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav_item">
+                            <div>
+                                <a href="#e">
+                                    <i class="icon fa fa-users"></i>
+                                    <span>测试3</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </aside>
+    <aside id="sidebar">
+        右侧边栏
+    </aside>
+    <article id="content">
+        内容
+    </article>
+    <section>
+        <div id="tabs">
+            <div class="swiper-container">
+                <ul class="swiper-wrapper tabs_wrapper">
+                    <li class="swiper-slide tab_active">
+                        <a href="#">首页</a>
+                    </li>
+                </ul>
+                <div class="swiper-scrollbar"></div>
+            </div>
+            <div class="dropdown_wrapper">
+                <div class="dropdown_show">
+                    <button class="btn btn_blue small">
+                            <span>更多</span>
+                            <i class="icon fa fa-angle-down" ></i>
+                        </button>
+                </div>
+                <ul class="dropdown_hide">
+                    <li class="close_other">关闭其他</li>
+                    <li class="clost_all">关闭全部</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- 底部代码不需要可以删除 -->
+    <!-- <footer id="footer">
+        <p class="copyright"> Copyright © 2021 之马工厂</p>
+    </footer> -->
+    <script>
+        /** ---------- 全局变量S ---------- */
+        const windowH = $(window).height() || 0,
+            windowW = $(window).width() || 0,
+            headerH = $('#header').height() || 0,
+            headerW = $('#header').width() || 0,
+            navWrapH = $('#nav').height() || 0,
+            navWrapW = $('#nav').width() || 0,
+            sidebarH = $('#sidebar').height() || 0,
+            sidebarW = $('#sidebar').width() || 0,
+            tabsWrapH = $('#tabs').height() || 0,
+            tabsWrapW = $('#tabs').width() || 0,
+            footerH = $('#footer').height() || 0,
+            footerW = $('#footer').width() || 0;
+
+        /**侧边导航插件*/
+        var layout = $('#nav .nav_wraper').Layout({});
+
+        /**顶部导航*/
+        var tabsWrapper = new Swiper('#tabs .swiper-container', {
+            scrollbar: { // 滚动条
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+            grabCursor: true, // 鼠标抓手形状
+            slidesPerView: 'auto',
+            spaceBetween: 30, //  左右距离
+        });
+        tabsWrapper.scrollbar.$el.css('height', '3px'); // 设置滚动条宽度
+        tabsWrapper.scrollbar.$dragEl.css('background', 'rgba(0,0,0,0.3)'); // 设置滚动条颜色
+        /** ---------- 全局变量E ---------- */
+    </script>
+</body>
+
+</html>
