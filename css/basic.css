@@ -10,6 +10,7 @@ body {
     font-size: 14px;
     font-family: Microsoft Yahei, "微软雅黑", Arial;
     color: #303133;
+    background-color: #f5f7fa;
 }
 
 a {
@@ -33,6 +34,10 @@ select {
     outline: none;
     border: none;
     background-color: transparent;
+}
+
+table {
+    border-collapse: collapse;
 }
 
 ul,

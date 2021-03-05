@@ -1,0 +1,40 @@
+@charset "utf-8";
+fieldset {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin: 0 0 20px;
+}
+
+legend {
+    margin-left: 20px;
+    padding: 0 10px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+xmp {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    margin: 0 0 20px;
+}
+
+.code_block {
+    margin: 20px 0;
+    background: #fff;
+}
+
+.code_block table,
+.code_block table tr th,
+.code_block table tr td {
+    border: 1px solid #ddd;
+}
+
+.code_block table {
+    margin: 0 0 20px;
+}
+
+.code_block table tbody td {
+    padding: 10px;
+}

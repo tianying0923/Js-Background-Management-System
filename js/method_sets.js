@@ -45,7 +45,7 @@
                         'top': headerH
                     });
                     $('#content').css({
-                        'padding': (headerH + tabsWrapH) + 'px 0 ' + footerH + 'px ' + window.navWrapW + 'px',
+                        'margin': (headerH + tabsWrapH + 10) + 'px 10px ' + (footerH + 10) + 'px ' + (window.navWrapW + 10) + 'px',
                     });
                     $('#footer').css({ // 设置footer宽度
                         'left': window.navWrapW
