@@ -221,6 +221,9 @@
     position: relative;
     box-sizing: border-box;
     background-color: #fff;
+}
+
+#content .wrap {
     padding: 20px;
 }
 

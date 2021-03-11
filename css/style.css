@@ -146,3 +146,37 @@ sup.dot_num {
     border-right-color: transparent;
     border-left-color: transparent;
 }
+
+
+/* ---------- 栅格 ---------- */
+
+.ja_row {
+    display: flex;
+}
+
+.ja_col {
+    display: flex;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+}
+
+.ja_col div {
+    width: 100%;
+}
+
+.ja_col:last-of-type {
+    margin-right: 0px!important;
+}
+
+.ja_aicenter .ja_col {
+    /* 垂直居中 */
+    align-items: center;
+}
+
+.ja_lrcenter .ja_col {
+    /* 左右居中 */
+    text-align: center;
+    justify-content: center;
+}

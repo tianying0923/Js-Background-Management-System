@@ -13,4 +13,5 @@ $(function() {
         tabTitleWrapper: '#content .dropdown_wrapper .tab_title_wrapper',
         tabMainWrapper: '#content .dropdown_wrapper .tab_main_wrapper'
     });
+    $('body').ZmLayout();
 });

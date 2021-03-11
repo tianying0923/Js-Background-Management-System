@@ -367,6 +367,41 @@
                 };
             init();
         },
+        ZmLayout: function(options) {
+            let defaultOptions = {
+                pattern: /\d+$/
+            };
+            const opts = $.extend({}, defaultOptions, options),
+                init = function() {
+                    for (const i of $('.ja_row')) { // 获取页面带有class=zm_row的元素，循环
+                        const rowAttrStr = $(i).attr('class');
+                        let colSpaceVal = rowAttrStr.match(opts.pattern); // 正则匹配获取子元素左右边距
+                        if (colSpaceVal) {
+                            colSpaceVal = colSpaceVal[0].match(/^\d{1,2}/);
+                            $(i).children().css({
+                                'padding': '0 ' + colSpaceVal / 2 + 'px',
+                            });
+                        }
+                        for (const j of $(i).children()) { // 获取页面带有class=zm_row的子元素，循环
+                            const colAttrStr = $(j).attr('class');
+                            let colVal = colAttrStr.match(opts.pattern); // 正则匹配获取子元素宽度
+                            if (colVal) {
+                                if (colVal[0].match(/^\d{1,2}/) > 12) colVal = colVal[0].match(/^\d{1}/);
+                                else colVal = colVal[0].match(/^\d{1,2}/);
+                            } else {
+                                if (!$(j).siblings().length) colVal = 12;
+                                else colVal = 1;
+                            }
+                            $(j).css({
+                                'flex': '0 0' + 100 / 12 * colVal + '%',
+                                'max-width': 100 / 12 * colVal + '%',
+                            });
+                        }
+                    }
+                };
+            init();
+            return {};
+        }
     });
 
 })($);

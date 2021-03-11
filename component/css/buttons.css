@@ -1,6 +1,6 @@
 /* ---------- 默认按钮 ---------- */
 
-.btn .icon {
+.btn .btn_icon {
     margin-right: 3px;
 }
 
@@ -10,16 +10,15 @@
     background-color: #fff;
     line-height: 1;
     white-space: nowrap;
-    -webkit-appearance: none;
     text-align: center;
     box-sizing: border-box;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    padding: 12px 20px;
+    padding: 10px 20px;
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .btn:hover {
@@ -28,183 +27,211 @@
     background-color: #ecf5ff;
 }
 
-.btn_blue {
+.btn_primary {
     color: #fff;
     border-color: #409eff;
     background-color: #409eff;
 }
 
-.btn_blue:hover {
+.btn_primary:hover {
     color: #fff;
     border-color: #66b1ff;
     background-color: #66b1ff;
 }
 
-.btn_green {
+.btn_success {
     color: #fff;
     border-color: #67c23a;
     background-color: #67c23a;
 }
 
-.btn_green:hover {
+.btn_success:hover {
     color: #fff;
     border-color: #85ce61;
     background-color: #85ce61;
 }
 
-.btn_grey {
+.btn_info {
     color: #fff;
     border-color: #909399;
     background-color: #909399;
 }
 
-.btn_grey:hover {
+.btn_info:hover {
     color: #fff;
     border-color: #a6a9ad;
     background-color: #a6a9ad;
 }
 
-.btn_orange {
+.btn_warning {
     color: #fff;
     border-color: #e6a23c;
     background-color: #e6a23c;
 }
 
-.btn_orange:hover {
+.btn_warning:hover {
     color: #fff;
     border-color: #ebb563;
     background-color: #ebb563;
 }
 
-.btn_red {
+.btn_danger {
     color: #fff;
     border-color: #f56c6c;
     background-color: #f56c6c;
 }
 
-.btn_red:hover {
+.btn_danger:hover {
     color: #fff;
     border-color: #f78989;
     background-color: #f78989;
 }
 
+.btn_link {
+    color: #409EFF;
+    border: none;
+    background-color: transparent;
+}
+
+.btn_link:hover {
+    color: #0056b3;
+    background: transparent;
+    text-decoration: underline;
+}
+
 
 /* ---------- 边框按钮 ---------- */
 
-.btn.is_plain:hover {
+.btn.btn_plain:hover {
     color: #409eff;
     border-color: #409eff;
-    background-color: #fff;
+    background-color: transparent;
 }
 
-.btn_blue.is_plain {
+.btn_primary.btn_plain {
     color: #409eff;
     border-color: #b3d8ff;
     background-color: #ecf5ff;
 }
 
-.btn_blue.is_plain:hover {
+.btn_primary.btn_plain:hover {
     color: #fff;
     border-color: #409eff;
     background-color: #409eff;
 }
 
-.btn_green.is_plain {
+.btn_success.btn_plain {
     color: #67c23a;
     border-color: #c2e7b0;
     background-color: #f0f9eb;
 }
 
-.btn_green.is_plain:hover {
+.btn_success.btn_plain:hover {
     color: #fff;
     border-color: #67c23a;
     background-color: #67c23a;
 }
 
-.btn_grey.is_plain {
+.btn_info.btn_plain {
     color: #909399;
     background-color: #f4f4f5;
     border-color: #d3d4d6;
 }
 
-.btn_grey.is_plain:hover {
+.btn_info.btn_plain:hover {
     color: #fff;
     border-color: #909399;
     background-color: #909399;
 }
 
-.btn_orange.is_plain {
+.btn_warning.btn_plain {
     color: #e6a23c;
     background-color: #fdf6ec;
     border-color: #f5dab1;
 }
 
-.btn_orange.is_plain:hover {
+.btn_warning.btn_plain:hover {
     color: #fff;
     border-color: #e6a23c;
     background-color: #e6a23c;
 }
 
-.btn_red.is_plain {
+.btn_danger.btn_plain {
     color: #f56c6c;
     background-color: #fef0f0;
     border-color: #fbc4c4;
 }
 
-.btn_red.is_plain:hover {
+.btn_danger.btn_plain:hover {
     color: #fff;
     border-color: #f56c6c;
     background-color: #f56c6c;
 }
 
 
-/* ---------- 不同尺寸按钮 ---------- */
+/* ---------- 虚线按钮 ---------- */
 
-.btn.medium {
-    padding: 10px 20px;
+.btn.btn_dashed {
+    border-style: dashed;
 }
 
-.btn.small {
+.btn.btn_dashed:hover {
+    border-style: dashed;
+}
+
+
+/* ---------- 不同尺寸按钮 ---------- */
+
+.btn.btn_lg {
+    padding: 13px 20px;
+}
+
+.btn.btn_sm {
     padding: 9px 15px;
     font-size: 12px;
     border-radius: 3px;
 }
 
-.btn.mini {
+.btn.btn_xs {
     padding: 7px 15px;
     font-size: 12px;
     border-radius: 3px;
 }
 
+.btn.btn_block {
+    display: block;
+    width: 100%;
+}
+
 
 /* ---------- 圆角按钮 ---------- */
 
-.btn.is_round {
+.btn.btn_round {
     border-radius: 20px;
 }
 
 
 /* ---------- 图标按钮 ---------- */
 
-.btn.is_circle .icon {
+.btn.btn_circle .btn_icon {
     margin-right: 0px;
 }
 
-.btn.is_circle {
-    padding: 12px;
+.btn.btn_circle {
+    padding: 10px;
     border-radius: 50%;
 }
 
-.btn.is_circle.medium {
-    padding: 10px;
+.btn.btn_circle.btn_lg {
+    padding: 12px;
 }
 
-.btn.is_circle.small {
+.btn.btn_circle.btn_sm {
     padding: 9px;
     font-size: 10px;
 }
 
-.btn.is_circle.mini {
+.btn.btn_circle.btn_xs {
     padding: 7px;
     font-size: 10px;
 }
@@ -220,31 +247,31 @@
     cursor: not-allowed;
 }
 
-.btn_blue:disabled {
+.btn_primary:disabled {
     color: #fff;
     border-color: #a0cfff;
     background-color: #a0cfff;
 }
 
-.btn_green:disabled {
+.btn_success:disabled {
     color: #fff;
     border-color: #b3e19d;
     background-color: #b3e19d;
 }
 
-.btn_grey:disabled {
+.btn_info:disabled {
     color: #fff;
     border-color: #c8c9cc;
     background-color: #c8c9cc;
 }
 
-.btn_orange:disabled {
+.btn_warning:disabled {
     color: #fff;
     background-color: #f3d19e;
     border-color: #f3d19e;
 }
 
-.btn_red:disabled {
+.btn_danger:disabled {
     color: #fff;
     background-color: #fab6b6;
     border-color: #fab6b6;
@@ -253,51 +280,38 @@
 
 /* ---------- 禁用按钮-边框按钮 ---------- */
 
-.btn.is_plain:disabled {
+.btn.btn_plain:disabled {
     background-color: #fff;
     border-color: #ebeef5;
     color: #c0c4cc;
 }
 
-.btn_blue.is_plain:disabled {
+.btn_primary.btn_plain:disabled {
     color: #8cc5ff;
     background-color: #ecf5ff;
     border-color: #d9ecff;
 }
 
-.btn_green.is_plain:disabled {
+.btn_success.btn_plain:disabled {
     color: #a4da89;
     background-color: #f0f9eb;
     border-color: #e1f3d8;
 }
 
-.btn_grey.is_plain:disabled {
+.btn_info.btn_plain:disabled {
     color: #bcbec2;
     background-color: #f4f4f5;
     border-color: #e9e9eb;
 }
 
-.btn_orange.is_plain:disabled {
+.btn_warning.btn_plain:disabled {
     color: #f0c78a;
     background-color: #fdf6ec;
     border-color: #faecd8;
 }
 
-.btn_red.is_plain:disabled {
+.btn_danger.btn_plain:disabled {
     color: #f9a7a7;
     background-color: #fef0f0;
     border-color: #fde2e2;
-}
-
-
-/* ---------- 文字按钮 ---------- */
-
-.btn_text {
-    color: #409EFF;
-    background-color: transparent;
-    border: none;
-}
-
-.btn_text:hover {
-    background: transparent;
 }
