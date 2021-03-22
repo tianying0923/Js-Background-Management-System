@@ -24,7 +24,7 @@ $(function() {
     /**E-全屏按钮*/
 
     /**S-下拉选项卡*/
-    $('.dropdown_wrapper').Dropdown({});
+    $('.dropdown_wrapper').Dropdown();
     $.swiper_tab({
         tabTitleWrapper: '#header .dropdown_wrapper .tab_title_wrapper',
         tabMainWrapper: '#header .dropdown_wrapper .tab_main_wrapper'

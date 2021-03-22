@@ -1,30 +1,30 @@
 (function($) {
     'use strict';
     $.fn.extend({
+        /**主体
+         * @param navClicked                    选填，导航选中class
+         * @param navDefaulIcon                 选填，导航默认右侧图标class
+         * @param navClickIcon                  选填，导航点击后右侧图标class
+         * @param navHDefaulIcon                选填，导航收起默认右侧图标class
+         * @param navHClickIcon                 选填，导航收起选中右侧图标class
+         * @param tabWrapper                 选填，点击右侧导航添加tab的父容名
+         * @param tabClicked                    选填，tabs选中class
+         */
         Layout: function(options) {
-            /**
-             * @param navClicked                    选填，导航选中class
-             * @param navDefaulIcon                 选填，导航默认右侧图标class
-             * @param navClickIcon                  选填，导航点击后右侧图标class
-             * @param navHDefaulIcon                选填，导航收起默认右侧图标class
-             * @param navHClickIcon                 选填，导航收起选中右侧图标class
-             * @param tabWrapper                 选填，点击右侧导航添加tab的父容名
-             * @param tabClicked                    选填，tabs选中class
-             */
-            let opts = {
+            let navScroll, isHorizontal;
+            const defOpts = {
                     openingSpeed: 400, // 打开菜单动画时间
                     closingSpeed: 400, // 关闭菜单动画时间
-                    navClicked: options.navClick || 'nav_active',
-                    navDefaulIcon: options.navDefaulIcon || 'fa-angle-down',
-                    navClickIcon: options.navClickIcon || 'fa-angle-up',
-                    navHDefaulIcon: options.navHDefaulIcon || 'fa-angle-right',
-                    navHClickIcon: options.navHDefaulIcon || 'fa-angle-left',
-                    tabWrapper: options.tabWrapper || '.tabs_wrapper',
-                    tabClicked: options.tabClicked || 'tab_active'
+                    navClicked: 'nav_active',
+                    navDefaulIcon: 'fa-angle-down',
+                    navClickIcon: 'fa-angle-up',
+                    navHDefaulIcon: 'fa-angle-right',
+                    navHClickIcon: 'fa-angle-left',
+                    tabWrapper: '.tabs_wrapper',
+                    tabClicked: 'tab_active'
                 },
-                navScroll, isHorizontal;
-            opts = $.extend({}, opts, options);
-            const that = this,
+                opts = $.extend({}, defOpts, options),
+                that = this,
                 /**初始化 */
                 init = function() {
                     $(that).children().find('.nav_sub_wrapper').show(); // 如不加此行代码会导致收起错位
@@ -323,14 +323,13 @@
                 removeTabsOther: removeTabsOther,
             };
         },
-        /**下拉列表 */
+        /**下拉列表
+         * @param method                    选填，事件，默认移入
+         */
         Dropdown: function(options) {
-            /**
-             * @param method                    选填，事件，默认移入
-             */
-            let opts = {};
-            opts = $.extend({}, opts, options);
-            const that = this,
+            const defOpts = {},
+                opts = $.extend({}, defOpts, options),
+                that = this,
                 /**初始化 */
                 init = function() {
                     initFunction();
@@ -367,13 +366,14 @@
                 };
             init();
         },
-        ZmLayout: function(options) {
-            let defaultOptions = {
-                pattern: /\d+$/
-            };
-            const opts = $.extend({}, defaultOptions, options),
+        /**栅格 */
+        JaGrid: function(options) {
+            const defOpts = {
+                    pattern: /\d+/
+                },
+                opts = $.extend({}, defOpts, options),
                 init = function() {
-                    for (const i of $('.ja_row')) { // 获取页面带有class=zm_row的元素，循环
+                    for (const i of $('.ja_row')) { // 获取页面带有class=ja_row的元素，循环
                         const rowAttrStr = $(i).attr('class');
                         let colSpaceVal = rowAttrStr.match(opts.pattern); // 正则匹配获取子元素左右边距
                         if (colSpaceVal) {
@@ -382,7 +382,7 @@
                                 'padding': '0 ' + colSpaceVal / 2 + 'px',
                             });
                         }
-                        for (const j of $(i).children()) { // 获取页面带有class=zm_row的子元素，循环
+                        for (const j of $(i).children()) { // 获取页面带有class=ja_row的子元素，循环
                             const colAttrStr = $(j).attr('class');
                             let colVal = colAttrStr.match(opts.pattern); // 正则匹配获取子元素宽度
                             if (colVal) {
@@ -401,12 +401,62 @@
                 };
             init();
             return {};
+        },
+        /**下拉框-select */
+        JaSelect: function(options) {
+            const defOpts = {
+                    placeholder: '请选择',
+                    showClear: false,
+                    filter: false,
+                },
+                opts = $.extend({}, defOpts, options),
+                init = function() {
+                    const single = $('.form_select_single'), // 单选
+                        multiples = $('.form_select_multiple'); // 多选
+                    for (const i of single) {
+                        $(i).multipleSelect({
+                            single: true,
+                            width: '100%',
+                            showClear: $(i).data("showclear") || opts.showClear, // 清空按钮
+                            filter: $(i).data("filter") || opts.filter, // 搜索/过滤
+                            placeholder: $(i).data("placeholder") || opts.placeholder, // 提示/占位符
+                            formatNoMatchesFound: function() { // 格式化
+                                return '未找到匹配项'
+                            }
+                        });
+                    }
+                    for (const j of multiples) {
+                        $(j).multipleSelect({
+                            width: '100%',
+                            showClear: $(j).data("showclear") || opts.showClear, // 清空按钮
+                            filter: $(j).data("filter") || opts.filter, // 搜索/过滤
+                            placeholder: $(j).data("placeholder") || opts.placeholder, // 提示/占位符
+                            ellipsis: true, // 超出宽度省略号
+                            minimumCountSelected: 1000, // 超出宽度省略号
+                            formatSelectAll: function() { // 格式化
+                                return '全选'
+                            },
+                            formatAllSelected: function() { // 格式化
+                                return '全选'
+                            },
+                            formatNoMatchesFound: function() { // 格式化
+                                return '未找到匹配项'
+                            },
+                        });
+                    }
+                };
+            init();
+            return {};
         }
     });
 
 })($);
 
 jQuery.extend({
+    /**tab选项卡切换
+     * @param tabTitleWrapper 选项卡头
+     * @param tabMainWrapper 选项卡内容
+     */
     swiper_tab: function(options) {
         let opts = {
                 tabClicked: options.tabClicked || 'tab_active',

@@ -166,10 +166,6 @@ sup.dot_num {
     width: 100%;
 }
 
-.ja_col:last-of-type {
-    margin-right: 0px!important;
-}
-
 .ja_aicenter .ja_col {
     /* 垂直居中 */
     align-items: center;

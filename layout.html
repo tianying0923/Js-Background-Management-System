@@ -6,20 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- 文档 -->
     <link rel="stylesheet" href="./css/codestyle.css">
+    <!-- tab切换 -->
     <link rel="stylesheet" href="./js/swiper-6.4.5/swiper-bundle.min.css">
+    <!-- 弹层 -->
     <link rel="stylesheet" href="./js/layer-v3.2.0/theme/default/layer.css">
+    <!-- 字体 -->
     <link rel="stylesheet" href="./css/awesome/css/font-awesome.min.css">
+    <!-- 下拉框 -->
+    <link rel="stylesheet" href="./js/multiple-select-1.5.2/multiple-select.min.css">
     <link rel="stylesheet" href="./css/basic.css">
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/forms.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/jquery-3.4.1.min.js"></script>
+    <!-- tab切换 -->
     <script src="./js/swiper-6.4.5/swiper-bundle.min.js"></script>
+    <!-- 弹层 -->
     <script src="./js/layer-v3.2.0/layer.js"></script>
+    <!-- 全屏 -->
     <script src="./js/screenfull.js"></script>
-    <script src="./js/again_load.js"></script>
+    <!-- 下拉框 -->
+    <script src="./js/multiple-select-1.5.2/multiple-select.min.js"></script>
+    <!-- 方法封装 -->
     <script src="./js/method_sets.js"></script>
+    <!-- 再次加重 -->
+    <script src="./js/again_load.js"></script>
+    <!-- 框架js -->
     <script src="./js/layout.js"></script>
 </head>
 
@@ -309,7 +323,7 @@
             </div>
             <div class="dropdown_wrapper">
                 <div class="dropdown_show">
-                    <button class="btn btn_blue small">
+                    <button class="btn btn_primary btn_sm">
                             <span>更多</span>
                             <i class="icon fa fa-angle-down" ></i>
                         </button>
@@ -341,7 +355,7 @@
             footerW = $('#footer').width() || 0;
 
         /**侧边导航插件*/
-        var layout = $('#nav .nav_wraper').Layout({});
+        var layout = $('#nav .nav_wraper').Layout();
 
         /**顶部导航*/
         var tabsWrapper = new Swiper('#tabs .swiper-container', {

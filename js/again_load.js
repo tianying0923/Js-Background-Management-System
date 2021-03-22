@@ -13,5 +13,14 @@ $(function() {
         tabTitleWrapper: '#content .dropdown_wrapper .tab_title_wrapper',
         tabMainWrapper: '#content .dropdown_wrapper .tab_main_wrapper'
     });
-    $('body').ZmLayout();
+    $('body').JaGrid();
+    $('body').JaSelect();
+    const bodyOpts = $('body').find('option');
+    // console.log(bodyOpts);
+    // if (bodyOpts.length > 0) {
+    //     for (const i of bodyOpts) {
+    //         console.log(i)
+    //         if ($(i).val() === '0') $(i).remove();
+    //     }
+    // }
 });
