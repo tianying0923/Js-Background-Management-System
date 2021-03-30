@@ -62,14 +62,20 @@
                 initDefaulStyle = function() {
                     $(that).find('.nav_item').removeClass(opts.navClicked); // 清除所有li选中样式
                     $(that).find('.nav_sub_wrapper').hide(); // 所有ul隐藏
+                    const _html = formatAHtml($(opts.tabWrapper).children('.' + opts.tabClicked).children('a')); // 格式化a标签
                     if (isHorizontal) {
                         $('.header_logo').css('width', '60px');
                         $('.logo_hide').show().siblings().hide();
+                        for (const i of $(that).find('.nav_item')) {
+                            if ($(i).children('div').find('span').eq(0).html() === _html.eleTitle) {
+                                navItemClickFun($(i));
+                                break;
+                            }
+                        }
                     } else {
                         $('.header_logo').css('width', '224px');
                         $('.logo_hide').hide().siblings().show();
                         if ($(opts.tabWrapper).children().length > 1) {
-                            const _html = formatAHtml($(opts.tabWrapper).children('.' + opts.tabClicked).children('a')); // 格式化a标签
                             sideNavStyle($(that), _html.eleTitle);
                         }
                     }
@@ -141,14 +147,10 @@
                 navItemClick = function(event) {
                     event.stopPropagation(); // 阻止冒泡
                     if (isHorizontal) {
-                        if ($(this).children('ul').is('.nav_sub_wrapper')) { // 子导航存在
-                            return false; // 阻止跳转
-                        } else { // 子导航不存在
-                            if ($(this).parents('.nav_item').length)
-                                $(this).parents('.nav_item').addClass(opts.navClicked).siblings().removeClass(opts.navClicked); // 给当前点击元素增加背景色
-                            else $(this).addClass(opts.navClicked).siblings().removeClass(opts.navClicked); // 给当前点击元素增加背景色
-                            navItemClickFun($(this).children('div'));
-                        }
+                        // 子导航存在
+                        if ($(this).children('ul').is('.nav_sub_wrapper')) return false; // 阻止跳转
+                        // 子导航不存在 
+                        else navItemClickFun($(this));
                     } else {
                         $(that).find('.nav_item').removeClass(opts.navClicked); // 清除所有li元素的选中样式
                         $(this).siblings().find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon); // 切换箭头class
@@ -171,18 +173,23 @@
                             }
                             return false; // 阻止跳转
                         } else { // 子导航不存在
-                            $(this).addClass(opts.navClicked); // 给当前点击元素增加背景色
-                            navItemClickFun($(this).children('div'));
+                            navItemClickFun($(this));
                         }
                     }
                 },
                 /**封装：点击方法 */
                 navItemClickFun = function(ele) {
-                    const eleA = $(ele).children('a'),
-                        eleSpanHtml = $(ele).find('span').eq(0).html(),
+                    const eleA = $(ele).children('div').children('a'),
+                        eleSpanHtml = $(ele).children('div').find('span').eq(0).html(),
                         eleAHref = $(eleA).attr('href');
                     if (eleAHref == '#') layer.msg('顶部导航不支持href="#"的操作！！！</br>请检查代码！！！');
                     else {
+                        if (isHorizontal) {
+                            // 给当前点击元素增加背景色
+                            if ($(ele).parents('.nav_item').length) $(ele).parents('.nav_item').addClass(opts.navClicked).siblings().removeClass(opts.navClicked);
+                            // 给当前点击元素增加背景色
+                            else $(ele).addClass(opts.navClicked).siblings().removeClass(opts.navClicked);
+                        } else $(ele).addClass(opts.navClicked); // 给当前点击元素增加背景色
                         loadPage($(eleA));
                         addTabs(eleSpanHtml, eleAHref);
                     }
@@ -408,6 +415,8 @@
                     placeholder: '请选择',
                     showClear: false,
                     filter: false,
+                    filterGroup: false,
+                    selectAll: false
                 },
                 opts = $.extend({}, defOpts, options),
                 init = function() {
@@ -430,7 +439,9 @@
                             width: '100%',
                             showClear: $(j).data("showclear") || opts.showClear, // 清空按钮
                             filter: $(j).data("filter") || opts.filter, // 搜索/过滤
+                            filterGroup: $(j).data("filtergroup") || opts.filterGroup, // 搜索/过滤分组
                             placeholder: $(j).data("placeholder") || opts.placeholder, // 提示/占位符
+                            selectAll: !$(j).data("selectall") || opts.selectAll, // 全选按钮
                             ellipsis: true, // 超出宽度省略号
                             minimumCountSelected: 1000, // 超出宽度省略号
                             formatSelectAll: function() { // 格式化

@@ -2,34 +2,18 @@
     <style>
         /* ---------- 默认表单 ---------- */
         
-        .form_tips {
-            color: #999;
-        }
-        
         .form_item {
             margin: 20px 0;
         }
+        /* ---------- 左侧lable ---------- */
         
-        .form_item .form_lable {
+        .form_lable {
             display: block;
             width: 100%;
             text-align: right;
             line-height: 36px;
         }
-        
-        .form_item .form_tips {
-            line-height: 36px;
-        }
-        
-        .form_item .form_input {
-            display: block;
-            width: 100%;
-            border: 1px solid #dcdfe6;
-            padding: 0 15px;
-            box-sizing: border-box;
-            border-radius: 4px;
-            line-height: 36px;
-        }
+        /* ---------- 多选框 ---------- */
         
         .form_item .ms-choice {
             position: relative;
@@ -56,6 +40,108 @@
         .form_item .ms-drop ul>li.hide-radio.selected {
             background-color: #409eff;
         }
+        /* ---------- 提示 ---------- */
+        
+        .form_tips {
+            line-height: 36px;
+            color: #999;
+        }
+        /* ---------- 输入框 ---------- */
+        
+        .form_input {
+            display: block;
+            width: 100%;
+            border: 1px solid #dcdfe6;
+            padding: 0 15px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            height: 36px;
+            line-height: 36px;
+        }
+        /* ---------- 单选框 ---------- */
+        
+        .form_radio_wrap,
+        .form_checkbox_wrap {
+            height: 36px;
+            line-height: 36px;
+        }
+        
+        .form_radio_wrap input:disabled+label {
+            cursor: not-allowed;
+            color: #999;
+        }
+        /* ---------- 多选框 ---------- */
+        
+        .form_item .form_checkbox_wrap {
+            position: relative;
+            display: inline-block;
+            margin: 0 3px 10px 0;
+        }
+        
+        .form_checkbox_wrap input[type='checkbox'] {
+            display: none;
+        }
+        
+        .form_checkbox_wrap label {
+            position: relative;
+            padding-left: 20px;
+            color: #606266;
+        }
+        
+        .form_checkbox_wrap label:before {
+            content: '';
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 11px;
+            height: 11px;
+            border: 1px solid #767676;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+        
+        .form_checkbox_wrap label:after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 4px;
+            height: 9px;
+            border: 0;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+        
+        .form_checkbox_wrap input[type='checkbox']:checked+label:before {
+            background: #409eff;
+            border-color: #409eff;
+        }
+        
+        .form_checkbox_wrap input[type='checkbox']:checked+label:after {
+            background: #409eff;
+        }
+        
+        .form_checkbox_wrap input[type='checkbox']:disabled+label:before {
+            border-color: #D1D1D1;
+            background-color: #F8F8F8;
+        }
+        
+        .form_checkbox_wrap input[type='checkbox']:disabled+label:after {
+            background-color: #F8F8F8;
+        }
+        
+        .form_checkbox_wrap input[type='checkbox']:disabled+label {
+            color: #C0C4CC;
+            cursor: not-allowed;
+        }
         /* ---------- 禁用 ---------- */
         
         input:disabled {
@@ -75,7 +161,7 @@
         .form_item.form_item_lg .form_lable,
         .form_item.form_item_lg .form_input,
         .form_item.form_item_lg .ms-choice,
-        .form_item .form_tips {
+        .form_item.form_item_lg .form_tips {
             height: 40px;
             line-height: 40px;
         }
@@ -83,7 +169,7 @@
         .form_item.form_item_sm .form_lable,
         .form_item.form_item_sm .form_input,
         .form_item.form_item_sm .ms-choice,
-        .form_item .form_tips {
+        .form_item.form_item_sm .form_tips {
             height: 32px;
             line-height: 32px;
         }
@@ -91,7 +177,7 @@
         .form_item.form_item_xs .form_lable,
         .form_item.form_item_xs .form_input,
         .form_item.form_item_xs .ms-choice,
-        .form_item .form_tips {
+        .form_item.form_item_xs .form_tips {
             height: 28px;
             line-height: 28px;
         }
@@ -102,7 +188,7 @@
                 <legend>展示</legend>
             </fieldset>
             <form action="#">
-                <div class="ja_row form_item ja_space20 form_item_lg">
+                <div class="ja_row form_item ja_space20">
                     <div class="ja_col ja_col2">
                         <label class="form_lable">输入框</label>
                     </div>
@@ -110,7 +196,7 @@
                         <input class="form_input" type="text" placeholder="请输入随便">
                     </div>
                 </div>
-                <div class="ja_row form_item ja_space20 form_item_lg">
+                <div class="ja_row form_item ja_space20">
                     <div class="ja_col ja_col2">
                         <label class="form_lable">密码框</label>
                     </div>
@@ -121,18 +207,18 @@
                         辅助文字
                     </div>
                 </div>
-                <div class="ja_row form_item ja_space20 form_item_lg">
+                <div class="ja_row form_item ja_space20">
                     <div class="ja_col ja_col2">
                         <label class="form_lable">下拉框-单选</label>
                     </div>
-                    <div class="ja_col ja_col7">
+                    <div class="ja_col ja_col7 ">
                         <select class="form_select_single" multiple>
                             <option value="1">选项1</option>
                             <option value="2">选项2</option>
                         </select>
                     </div>
                 </div>
-                <div class="ja_row form_item ja_space20 form_item_lg">
+                <div class="ja_row form_item ja_space20">
                     <div class="ja_col ja_col2">
                         <label class="form_lable">下拉框-多选</label>
                     </div>
@@ -143,7 +229,54 @@
                         </select>
                     </div>
                 </div>
+                <div class="ja_row form_item ja_space20">
+                    <div class="ja_col ja_col2">
+                        <label class="form_lable">性别</label>
+                    </div>
+                    <div class="ja_col ja_col7">
+                        <div class="ja_row ja_space5">
+                            <div class="form_radio_wrap ja_col1">
+                                <input type="radio" name="sex" id="man">
+                                <label for="man">男</label>
+                            </div>
+                            <div class="form_radio_wrap ja_col1">
+                                <input type="radio" name="sex" id="woman">
+                                <label for="woman">女</label>
+                            </div>
+                            <div class="form_radio_wrap ja_col1">
+                                <input type="radio" name="sex" id="unknown" disabled>
+                                <label for="unknown">不详</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ja_row form_item ja_space20">
+                    <div class="ja_col ja_col2">
+                        <label class="form_lable">复选框</label>
+                    </div>
+                    <div class="ja_col ja_col7">
+                        <div class="ja_row ja_space5">
+                            <div class='form_checkbox_wrap ja_col1'>
+                                <input type='checkbox' id='checkbox1' name='checkboox[]'>
+                                <label for='checkbox1'>多选1</label>
+                            </div>
+                            <div class='form_checkbox_wrap ja_col1'>
+                                <input type='checkbox' id='checkbox2' name='checkboox[]'>
+                                <label for='checkbox2'>多选2</label>
+                            </div>
+                            <div class='form_checkbox_wrap ja_col1'>
+                                <input type='checkbox' id='checkbox3' name='checkboox[]' disabled>
+                                <label for='checkbox3'>多选3</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
+            <xmp>
+                <button type="button" class="btn">
+                    <span>default</span>
+                </button>
+            </xmp>
         </div>
         <div class="code_block">
             <fieldset>
@@ -207,10 +340,36 @@
                     </div>
                 </div>
             </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>类名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>大型</td>
+                        <td>class="form_item form_item_lg"</td>
+                    </tr>
+                    <tr>
+                        <td>默认</td>
+                        <td>class="form_item"</td>
+                    </tr>
+                    <tr>
+                        <td>小型</td>
+                        <td>class="form_item form_item_sm"</td>
+                    </tr>
+                    <tr>
+                        <td>迷你</td>
+                        <td>class="form_item form_item_xs"</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="code_block">
             <fieldset>
-                <legend>下拉框-单选</legend>
+                <legend>下拉框-单/多选</legend>
             </fieldset>
             <form action="#">
                 <div class="ja_row form_item ja_space20">
@@ -218,10 +377,20 @@
                         <label class="form_lable">普通下拉框</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple>
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_single" multiple>
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_multiple" multiple>
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="ja_row form_item ja_space20">
@@ -229,10 +398,20 @@
                         <label class="form_lable">能清除的下拉框</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple data-showclear="true">
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_single" multiple data-showclear="true">
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_multiple" multiple data-showclear="true">
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="ja_row form_item ja_space20">
@@ -240,10 +419,20 @@
                         <label class="form_lable">自定义占位符下拉框</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple data-placeholder="我是自定义提示！！！">
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_single" multiple data-placeholder="我是单选框自定义提示！！！">
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_multiple" multiple data-placeholder="我是多选框自定义提示！！！">
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="ja_row form_item ja_space20">
@@ -251,29 +440,75 @@
                         <label class="form_lable">分组下拉框</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple>
-                            <optgroup label="分组1">
-                                <option value="1">选项1</option>
-                                <option value="2" >选项2</option>
-                            </optgroup>
-                            <optgroup label="分组2">
-                                <option value="1">选项1</option>
-                                <option value="2" >选项2</option>
-                            </optgroup>
-                        </select>
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_single" multiple>
+                                    <optgroup label="分组1">
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </optgroup>
+                                    <optgroup label="分组2">
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_multiple" multiple>
+                                    <optgroup label="分组1">
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </optgroup>
+                                    <optgroup label="分组2">
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="ja_row form_item ja_space20">
                     <div class="ja_col ja_col2">
                         <label class="form_lable">带搜索的下拉框</label>
                     </div>
-                    <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple data-filter="true">
-                            <option value="1">选项1</option>
-                            <option value="2">选项2</option>
-                            <option value="3">选项3</option>
-                            <option value="4">选项4</option>
-                        </select>
+                    <div class="ja_col ja_col10">
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col4">
+                                <select class="form_select_single" multiple data-filter="true">
+                                    <option value="1">选项1</option>
+                                    <option value="2">选项2</option>
+                                    <option value="3">选项3</option>
+                                    <option value="4">选项4</option>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col4">
+                                <select class="form_select_multiple" multiple data-filter="true">
+                                    <option value="1">选项1</option>
+                                    <option value="2">选项2</option>
+                                    <option value="3">选项3</option>
+                                    <option value="4">选项4</option>
+                                    <option value="5">选项5</option>
+                                    <option value="6">选项6</option>
+                                    <option value="7">选项7</option>
+                                    <option value="8">选项8</option>
+                                    <option value="9">选项9</option>
+                                    <option value="10">选项10</option>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col4">
+                                <select class="form_select_multiple" multiple data-filter="true" data-filtergroup="true" data-placeholder="过滤分组！！！">
+                                    <optgroup label="分组1">
+                                            <option value="1">选项1</option>
+                                            <option value="2" >选项2</option>
+                                        </optgroup>
+                                        <optgroup label="分组2">
+                                            <option value="1">选项1</option>
+                                            <option value="2" >选项2</option>
+                                        </optgroup>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="ja_row form_item ja_space20">
@@ -281,16 +516,26 @@
                         <label class="form_lable">禁用下拉框</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple disabled>
-                            <optgroup label="分组1">
-                                <option value="1">选项1</option>
-                                <option value="2" >选项2</option>
-                            </optgroup>
-                            <optgroup label="分组2">
-                                <option value="1">选项1</option>
-                                <option value="2" >选项2</option>
-                            </optgroup>
-                        </select>
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_single" multiple disabled>
+                                    <optgroup label="分组1">
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </optgroup>
+                                    <optgroup label="分组2">
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_multiple" multiple disabled>
+                                    <option value="1">选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="ja_row form_item ja_space20">
@@ -298,105 +543,30 @@
                         <label class="form_lable">禁用选项下拉框</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_single" multiple>
-                            <option value="1" disabled>选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
+                        <div class="ja_row ja_space5">
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_single" multiple>
+                                    <option value="1" disabled>选项1</option>
+                                    <option value="2" >选项2</option>
+                                </select>
+                            </div>
+                            <div class="ja_col ja_col6">
+                                <select class="form_select_multiple" multiple>
+                                    <option value="1" disabled>选项1</option>
+                                    <option value="2" >选项2</option>
+                                    <option value="3">选项3</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="code_block">
-            <fieldset>
-                <legend>下拉框-多选</legend>
-            </fieldset>
-            <form action="#">
                 <div class="ja_row form_item ja_space20">
                     <div class="ja_col ja_col2">
-                        <label class="form_lable">普通下拉框</label>
+                        <label class="form_lable">隐藏全选按钮</label>
                     </div>
                     <div class="ja_col ja_col7">
-                        <select class="form_select_multiple" multiple>
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="ja_row form_item ja_space20">
-                    <div class="ja_col ja_col2">
-                        <label class="form_lable">能清除的下拉框</label>
-                    </div>
-                    <div class="ja_col ja_col7">
-                        <select class="form_select_multiple" multiple data-showclear="true">
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="ja_row form_item ja_space20">
-                    <div class="ja_col ja_col2">
-                        <label class="form_lable">自定义占位符下拉框</label>
-                    </div>
-                    <div class="ja_col ja_col7">
-                        <select class="form_select_multiple" multiple data-placeholder="我是自定义提示！！！">
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="ja_row form_item ja_space20">
-                    <div class="ja_col ja_col2">
-                        <label class="form_lable">分组下拉框</label>
-                    </div>
-                    <div class="ja_col ja_col7">
-                        <select class="form_select_multiple" multiple>
-                            <optgroup label="分组1">
-                                <option value="1">选项1</option>
-                                <option value="2" >选项2</option>
-                            </optgroup>
-                            <optgroup label="分组2">
-                                <option value="1">选项1</option>
-                                <option value="2" >选项2</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
-                <div class="ja_row form_item ja_space20">
-                    <div class="ja_col ja_col2">
-                        <label class="form_lable">带搜索的下拉框</label>
-                    </div>
-                    <div class="ja_col ja_col3">
-                        <select class="form_select_multiple" multiple data-filter="true">
-                            <option value="1">选项1</option>
-                            <option value="2">选项2</option>
-                            <option value="3">选项3</option>
-                            <option value="4">选项4</option>
-                            <option value="5">选项5</option>
-                            <option value="6">选项6</option>
-                            <option value="7">选项7</option>
-                            <option value="8">选项8</option>
-                            <option value="9">选项9</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="ja_row form_item ja_space20">
-                    <div class="ja_col ja_col2">
-                        <label class="form_lable">禁用下拉框</label>
-                    </div>
-                    <div class="ja_col ja_col7">
-                        <select class="form_select_multiple" multiple disabled>
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="ja_row form_item ja_space20">
-                    <div class="ja_col ja_col2">
-                        <label class="form_lable">禁用选项下拉框</label>
-                    </div>
-                    <div class="ja_col ja_col7">
-                        <select class="form_select_multiple" multiple>
-                            <option value="1" disabled>选项1</option>
+                        <select class="form_select_multiple" multiple data-selectall="true">
+                            <option value="1" >选项1</option>
                             <option value="2" >选项2</option>
                             <option value="3">选项3</option>
                         </select>
