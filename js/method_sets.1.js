@@ -11,7 +11,8 @@
          * @param tabClicked                    选填，tabs选中class
          */
         Layout: function(options) {
-            let navScroll, isHorizontal;
+            let navScroll, isHorizontal,
+                flag = true;
             const defOpts = {
                     openingSpeed: 400, // 打开菜单动画时间
                     closingSpeed: 400, // 关闭菜单动画时间
@@ -25,6 +26,7 @@
                 },
                 opts = $.extend({}, defOpts, options),
                 that = this,
+
                 /**初始化 */
                 init = function() {
                     $(that).children().find('.nav_sub_wrapper').show(); // 如不加此行代码会导致收起错位
@@ -145,35 +147,40 @@
                 },
                 /**侧边导航：鼠标点击事件 */
                 navItemClick = function(event) {
-                    event.stopPropagation(); // 阻止冒泡
-                    if (isHorizontal) {
-                        // 子导航存在
-                        if ($(this).children('ul').is('.nav_sub_wrapper')) event.preventDefault(); // 取消超链接
-                        // 子导航不存在 
-                        else navItemClickFun($(this));
-                    } else {
-                        $(that).find('.nav_item').removeClass(opts.navClicked); // 清除所有li元素的选中样式
-                        $(this).siblings().find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon); // 切换箭头class
-                        $(this).siblings().find('.nav_sub_wrapper').slideUp(opts.openingSpeed, function() { // 所有兄弟元素的ul隐藏
-                            navScroll.update(); // 刷新导航滚动条
-                        });
-                        if ($(this).children('ul').is('.nav_sub_wrapper')) { // 子导航存在
-                            if ($(this).children('.nav_sub_wrapper').is(':hidden')) { // 子导航隐藏时
-                                $(this).children('ul').slideDown(opts.openingSpeed, function() {
-                                    setTimeout(function() {
+                    if (flag) {
+                        flag = false;
+                        event.stopPropagation(); // 阻止冒泡
+                        // event.stopImmediatePropagation();
+                        if (isHorizontal) {
+                            // 子导航存在
+                            if ($(this).children('ul').is('.nav_sub_wrapper')) return false;
+                            // event.preventDefault(); // 阻止跳转
+                            // 子导航不存在 
+                            else navItemClickFun($(this));
+                        } else {
+                            $(that).find('.nav_item').removeClass(opts.navClicked); // 清除所有li元素的选中样式
+                            $(this).siblings().find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon); // 切换箭头class
+                            $(this).siblings().find('.nav_sub_wrapper').slideUp(opts.openingSpeed, function() { // 所有兄弟元素的ul隐藏
+                                navScroll.update(); // 刷新导航滚动条
+                            });
+                            if ($(this).children('ul').is('.nav_sub_wrapper')) { // 子导航存在
+                                if ($(this).children('.nav_sub_wrapper').is(':hidden')) { // 子导航隐藏时
+                                    $(this).children('ul').slideDown(opts.openingSpeed, function() {
+                                        setTimeout(function() {
+                                            navScroll.update(); // 刷新导航滚动条
+                                        }, 500);
+                                    });
+                                    $(this).children('div').find('span.icon').toggleClass(opts.navDefaulIcon + ' ' + opts.navClickIcon); // 切换箭头class
+                                } else { // 子导航未隐藏时
+                                    $(this).children('.nav_sub_wrapper').slideUp(opts.openingSpeed, function() {
                                         navScroll.update(); // 刷新导航滚动条
-                                    }, 500);
-                                });
-                                $(this).children('div').find('span.icon').toggleClass(opts.navDefaulIcon + ' ' + opts.navClickIcon); // 切换箭头class
-                            } else { // 子导航未隐藏时
-                                $(this).children('.nav_sub_wrapper').slideUp(opts.openingSpeed, function() {
-                                    navScroll.update(); // 刷新导航滚动条
-                                });
-                                $(this).children('div').find('span.icon').toggleClass(opts.navClickIcon + ' ' + opts.navDefaulIcon); // 切换箭头class
+                                    });
+                                    $(this).children('div').find('span.icon').toggleClass(opts.navClickIcon + ' ' + opts.navDefaulIcon); // 切换箭头class
+                                }
+                                return false;
+                            } else { // 子导航不存在
+                                navItemClickFun($(this));
                             }
-                            event.preventDefault(); // 取消超链接
-                        } else { // 子导航不存在
-                            navItemClickFun($(this));
                         }
                     }
                 },
@@ -205,6 +212,7 @@
                     $('#content').load((_html.indexOf('/') >= 0 ? '.' : '') + _html + '.html');
                     // 需要重新加载的js
                     $.getScript('./js/again_load.js');
+                    flag = true;
                 },
                 /**顶部导航：添加
                  * @param eleHtml 选中元素的html
@@ -486,14 +494,14 @@ jQuery.extend({
                 $(opts.tabMainWrapper).find('.btn_prev').click(function() {
                     var activeNavIndex = $(opts.tabTitleWrapper + ' .' + opts.tabClicked).index() - 1;
                     tabMain.slideTo(activeNavIndex);
-                    event.stopPropagation(); // 阻止冒泡
+                    event.stopPropagation();
                     return false;
                 });
                 // 下一步
                 $(opts.tabMainWrapper).find('.btn_next').click(function() {
                     var activeNavIndex = $(opts.tabTitleWrapper + ' .' + opts.tabClicked).index() + 1;
                     tabMain.slideTo(activeNavIndex);
-                    event.stopPropagation(); // 阻止冒泡
+                    event.stopPropagation();
                     return false;
                 });
             },

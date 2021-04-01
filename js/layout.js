@@ -1,3 +1,4 @@
+// 后加载进来的内容
 $(document).on({
     click: function() {
         const addTabEleChild = window.layout.addTabs($(this).html(), $(this).attr('href'));
@@ -6,6 +7,7 @@ $(document).on({
 }, '.jump_page');
 
 $(function() {
+
     /**收放左侧导航按钮*/
     $('.header_btn').click(function() {
         $('#nav').toggleClass('horizontal');
@@ -61,6 +63,8 @@ $(function() {
         layout.removeTabsAll();
     });
     /**E-关闭所有*/
+    // 电脑屏幕小于1400时左侧导航自动收起
+    if ($(window).width() <= 1400) $('.header_btn').click();
 
 
 });
