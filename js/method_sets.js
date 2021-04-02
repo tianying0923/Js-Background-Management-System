@@ -10,7 +10,7 @@
          * @param tabWrapper                 选填，点击右侧导航添加tab的父容名
          * @param tabClicked                    选填，tabs选中class
          */
-        Layout: function(options) {
+        BmsLayout: function(options) {
             let navScroll, isHorizontal;
             const defOpts = {
                     openingSpeed: 400, // 打开菜单动画时间
@@ -36,21 +36,21 @@
                 },
                 /**初始化页面元素距左侧距离 */
                 initEle = function() {
-                    window.navWrapW = $('#nav').width();
-                    $('#nav').css({
+                    window.navWrapW = $('#bms_nav').width();
+                    $('#bms_nav').css({
                         'padding': headerH + 'px 0 0 0'
                     });
-                    $('#tabs').css({ // 设置tab宽度
+                    $('#bms_tabs').css({ // 设置tab宽度
                         'left': window.navWrapW,
                         'top': headerH
                     });
-                    $('#content').css({
+                    $('#bms_content').css({
                         'margin': (headerH + tabsWrapH + 10) + 'px 10px ' + (footerH + 10) + 'px ' + (window.navWrapW + 10) + 'px',
                     });
-                    $('#footer').css({ // 设置footer宽度
+                    $('#bms_footer').css({ // 设置footer宽度
                         'left': window.navWrapW
                     });
-                    $('#header .dropdown_hide').css({
+                    $('#bms_header .dropdown_hide').css({
                         'top': headerH - 10
                     });
                 },
@@ -120,13 +120,13 @@
                 },
                 /**初始化插件 */
                 initPlugIn = function() {
-                    navScroll = new Swiper('#nav .swiper-container', { // 导航栏滚动条
+                    navScroll = new Swiper('#bms_nav .swiper-container', { // 导航栏滚动条
                         direction: 'vertical',
                         roundLengths: true, // 宽和高取整(四舍五入)
                         slidesPerView: 'auto', // 设置slider容器能够同时显示的slides数量
                         freeMode: true,
                         scrollbar: { // 滚动条
-                            el: '#nav .swiper-scrollbar',
+                            el: '#bms_nav .swiper-scrollbar',
                         },
                         mousewheel: true, // 鼠标滚动
                     });
@@ -202,7 +202,7 @@
                         start = url.indexOf('#') + 1,
                         end = url.indexOf('?'),
                         _html = end > start ? url.substring(start, end) : url.substring(start);
-                    $('#content').load((_html.indexOf('/') >= 0 ? '.' : '') + _html + '.html');
+                    $('#bms_content').load((_html.indexOf('/') >= 0 ? '.' : '') + _html + '.html');
                     // 需要重新加载的js
                     $.getScript('./js/again_load.js');
                 },
@@ -333,7 +333,7 @@
         /**下拉列表
          * @param method                    选填，事件，默认移入
          */
-        Dropdown: function(options) {
+        BmsDropdown: function(options) {
             const defOpts = {},
                 opts = $.extend({}, defOpts, options),
                 that = this,
@@ -374,13 +374,13 @@
             init();
         },
         /**栅格 */
-        JaGrid: function(options) {
+        BmsGrid: function(options) {
             const defOpts = {
                     pattern: /\d+/
                 },
                 opts = $.extend({}, defOpts, options),
                 init = function() {
-                    for (const i of $('.ja_row')) { // 获取页面带有class=ja_row的元素，循环
+                    for (const i of $('.bms_row')) { // 获取页面带有class=bms_row的元素，循环
                         const rowAttrStr = $(i).attr('class');
                         let colSpaceVal = rowAttrStr.match(opts.pattern); // 正则匹配获取子元素左右边距
                         if (colSpaceVal) {
@@ -389,7 +389,7 @@
                                 'padding': '0 ' + colSpaceVal / 2 + 'px',
                             });
                         }
-                        for (const j of $(i).children()) { // 获取页面带有class=ja_row的子元素，循环
+                        for (const j of $(i).children()) { // 获取页面带有class=bms_row的子元素，循环
                             const colAttrStr = $(j).attr('class');
                             let colVal = colAttrStr.match(opts.pattern); // 正则匹配获取子元素宽度
                             if (colVal) {
@@ -410,7 +410,7 @@
             return {};
         },
         /**下拉框-select */
-        JaSelect: function(options) {
+        BmsSelect: function(options) {
             const defOpts = {
                     placeholder: '请选择',
                     showClear: false,
@@ -468,7 +468,7 @@ jQuery.extend({
      * @param tabTitleWrapper 选项卡头
      * @param tabMainWrapper 选项卡内容
      */
-    swiper_tab: function(options) {
+    bms_swiper_tab: function(options) {
         let opts = {
                 tabClicked: options.tabClicked || 'tab_active',
                 effect: options.effect || 'fade',

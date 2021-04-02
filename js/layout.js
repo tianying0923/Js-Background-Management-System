@@ -10,7 +10,7 @@ $(function() {
 
     /**收放左侧导航按钮*/
     $('.header_btn').click(function() {
-        $('#nav').toggleClass('horizontal');
+        $('#bms_nav').toggleClass('horizontal');
         $(this).children().toggleClass('fa-indent fa-outdent');
         layout.init();
         tabsWrapper.update();
@@ -26,10 +26,10 @@ $(function() {
     /**E-全屏按钮*/
 
     /**S-下拉选项卡*/
-    $('.dropdown_wrapper').Dropdown();
-    $.swiper_tab({
-        tabTitleWrapper: '#header .dropdown_wrapper .tab_title_wrapper',
-        tabMainWrapper: '#header .dropdown_wrapper .tab_main_wrapper'
+    $('.dropdown_wrapper').BmsDropdown();
+    $.bms_swiper_tab({
+        tabTitleWrapper: '#bms_header .dropdown_wrapper .tab_title_wrapper',
+        tabMainWrapper: '#bms_header .dropdown_wrapper .tab_main_wrapper'
     });
     /**E-下拉选项卡*/
 
@@ -41,13 +41,13 @@ $(function() {
     /**E-清除缓存*/
 
     /**S-TAB点击效果*/
-    $('#tabs').on('click', '.swiper-slide', function() {
+    $('#bms_tabs').on('click', '.swiper-slide', function() {
         layout.tabItemClick($(this));
     });
     /**E-TAB点击效果*/
 
     /**S-TAB选中效果*/
-    $('#tabs').on('click', '.swiper-slide .icon', function(event) {
+    $('#bms_tabs').on('click', '.swiper-slide .icon', function(event) {
         layout.removeTabs($(this), event);
     });
     /**E-TAB选中效果*/

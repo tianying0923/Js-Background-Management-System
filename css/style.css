@@ -150,12 +150,12 @@ sup.dot_num {
 
 /* ---------- 栅格 ---------- */
 
-.ja_row {
+.bms_row {
     display: flex;
     flex-wrap: wrap;
 }
 
-.ja_col {
+.bms_col {
     display: flex;
     word-break: break-all;
     word-wrap: break-word;
@@ -163,25 +163,25 @@ sup.dot_num {
     box-sizing: border-box;
 }
 
-.ja_col div {
+.bms_col div {
     width: 100%;
 }
 
-.ja_aicenter .ja_col {
+.bms_row_aicenter .bms_col {
     /* 垂直居中 */
     align-items: center;
 }
 
-.ja_lrcenter .ja_col {
+.bms_row_lrcenter .bms_col {
     /* 左右居中 */
     text-align: center;
     justify-content: center;
 }
 
-.ja_col .ja_row .ja_col:first-of-type {
+.bms_col .bms_row .bms_col:first-of-type {
     padding-left: 0!important;
 }
 
-.ja_col .ja_row .ja_col:last-of-type {
+.bms_col .bms_row .bms_col:last-of-type {
     padding-right: 0!important;
 }

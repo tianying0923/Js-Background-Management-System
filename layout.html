@@ -39,7 +39,7 @@
 
 <body>
     <header>
-        <div id="header">
+        <div id="bms_header">
             <div class="header_logo">
                 <a href="#" class="logo_show">show</a>
                 <a href="#" class="logo_hide">hide</a>
@@ -119,7 +119,7 @@
         </div>
     </header>
     <aside>
-        <div id="nav">
+        <div id="bms_nav">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <ul class="swiper-slide nav_wraper">
@@ -181,7 +181,7 @@
                             <ul class="nav_sub_wrapper">
                                 <li class="nav_item">
                                     <div>
-                                        <a href="#tabs_table">
+                                        <a href="#bms_tabs_table">
                                             <i class="icon fa fa-users"></i>
                                             <span>表格-选项卡</span>
                                         </a>
@@ -189,7 +189,7 @@
                                 </li>
                                 <li class="nav_item">
                                     <div>
-                                        <a href="#tabs_table_test">
+                                        <a href="#bms_tabs_table_test">
                                             <i class="icon fa fa-users"></i>
                                             <span>表格-测试</span>
                                         </a>
@@ -305,14 +305,14 @@
             </div>
         </div>
     </aside>
-    <aside id="sidebar">
+    <aside id="bms_sidebar">
         右侧边栏
     </aside>
-    <article id="content">
+    <article id="bms_content">
         内容内容
     </article>
     <section>
-        <div id="tabs">
+        <div id="bms_tabs">
             <div class="swiper-container">
                 <ul class="swiper-wrapper tabs_wrapper">
                     <li class="swiper-slide tab_active">
@@ -336,29 +336,29 @@
         </div>
     </section>
     <!-- 底部代码不需要可以删除 -->
-    <!-- <footer id="footer">
+    <!-- <footer id="bms_footer">
         <p class="copyright"> Copyright © 2021 之马工厂</p>
     </footer> -->
     <script>
         /** ---------- 全局变量S ---------- */
         const windowH = $(window).height() || 0,
             windowW = $(window).width() || 0,
-            headerH = $('#header').height() || 0,
-            headerW = $('#header').width() || 0,
-            navWrapH = $('#nav').height() || 0,
-            navWrapW = $('#nav').width() || 0,
-            sidebarH = $('#sidebar').height() || 0,
-            sidebarW = $('#sidebar').width() || 0,
-            tabsWrapH = $('#tabs').height() || 0,
-            tabsWrapW = $('#tabs').width() || 0,
-            footerH = $('#footer').height() || 0,
-            footerW = $('#footer').width() || 0;
+            headerH = $('#bms_header').height() || 0,
+            headerW = $('#bms_header').width() || 0,
+            navWrapH = $('#bms_nav').height() || 0,
+            navWrapW = $('#bms_nav').width() || 0,
+            sidebarH = $('#bms_sidebar').height() || 0,
+            sidebarW = $('#bms_sidebar').width() || 0,
+            tabsWrapH = $('#bms_tabs').height() || 0,
+            tabsWrapW = $('#bms_tabs').width() || 0,
+            footerH = $('#bms_footer').height() || 0,
+            footerW = $('#bms_footer').width() || 0;
 
         /**侧边导航插件*/
-        var layout = $('#nav .nav_wraper').Layout();
+        var layout = $('#bms_nav .nav_wraper').BmsLayout();
 
         /**顶部导航*/
-        var tabsWrapper = new Swiper('#tabs .swiper-container', {
+        var tabsWrapper = new Swiper('#bms_tabs .swiper-container', {
             scrollbar: { // 滚动条
                 el: '.swiper-scrollbar',
                 hide: true,

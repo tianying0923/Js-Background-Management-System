@@ -1,10 +1,10 @@
 /* ---------- 默认按钮 ---------- */
 
-.btn .btn_icon {
+.bms_btn .bms_btn_icon {
     margin-right: 3px;
 }
 
-.btn {
+.bms_btn {
     color: #606266;
     border: 1px solid #dcdfe6;
     background-color: #fff;
@@ -21,79 +21,79 @@
     -ms-user-select: none;
 }
 
-.btn:hover {
+.bms_btn:hover {
     color: #409eff;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
 }
 
-.btn_primary {
+.bms_btn_primary {
     color: #fff;
     border-color: #409eff;
     background-color: #409eff;
 }
 
-.btn_primary:hover {
+.bms_btn_primary:hover {
     color: #fff;
     border-color: #66b1ff;
     background-color: #66b1ff;
 }
 
-.btn_success {
+.bms_btn_success {
     color: #fff;
     border-color: #67c23a;
     background-color: #67c23a;
 }
 
-.btn_success:hover {
+.bms_btn_success:hover {
     color: #fff;
     border-color: #85ce61;
     background-color: #85ce61;
 }
 
-.btn_info {
+.bms_btn_info {
     color: #fff;
     border-color: #909399;
     background-color: #909399;
 }
 
-.btn_info:hover {
+.bms_btn_info:hover {
     color: #fff;
     border-color: #a6a9ad;
     background-color: #a6a9ad;
 }
 
-.btn_warning {
+.bms_btn_warning {
     color: #fff;
     border-color: #e6a23c;
     background-color: #e6a23c;
 }
 
-.btn_warning:hover {
+.bms_btn_warning:hover {
     color: #fff;
     border-color: #ebb563;
     background-color: #ebb563;
 }
 
-.btn_danger {
+.bms_btn_danger {
     color: #fff;
     border-color: #f56c6c;
     background-color: #f56c6c;
 }
 
-.btn_danger:hover {
+.bms_btn_danger:hover {
     color: #fff;
     border-color: #f78989;
     background-color: #f78989;
 }
 
-.btn_link {
+.bms_btn_link {
     color: #409EFF;
     border: none;
     background-color: transparent;
 }
 
-.btn_link:hover {
+.bms_btn_link:hover {
     color: #0056b3;
     background: transparent;
     text-decoration: underline;
@@ -102,67 +102,67 @@
 
 /* ---------- 边框按钮 ---------- */
 
-.btn.btn_plain:hover {
+.bms_btn.bms_btn_plain:hover {
     color: #409eff;
     border-color: #409eff;
     background-color: transparent;
 }
 
-.btn_primary.btn_plain {
+.bms_btn_primary.bms_btn_plain {
     color: #409eff;
     border-color: #b3d8ff;
     background-color: #ecf5ff;
 }
 
-.btn_primary.btn_plain:hover {
+.bms_btn_primary.bms_btn_plain:hover {
     color: #fff;
     border-color: #409eff;
     background-color: #409eff;
 }
 
-.btn_success.btn_plain {
+.bms_btn_success.bms_btn_plain {
     color: #67c23a;
     border-color: #c2e7b0;
     background-color: #f0f9eb;
 }
 
-.btn_success.btn_plain:hover {
+.bms_btn_success.bms_btn_plain:hover {
     color: #fff;
     border-color: #67c23a;
     background-color: #67c23a;
 }
 
-.btn_info.btn_plain {
+.bms_btn_info.bms_btn_plain {
     color: #909399;
     background-color: #f4f4f5;
     border-color: #d3d4d6;
 }
 
-.btn_info.btn_plain:hover {
+.bms_btn_info.bms_btn_plain:hover {
     color: #fff;
     border-color: #909399;
     background-color: #909399;
 }
 
-.btn_warning.btn_plain {
+.bms_btn_warning.bms_btn_plain {
     color: #e6a23c;
     background-color: #fdf6ec;
     border-color: #f5dab1;
 }
 
-.btn_warning.btn_plain:hover {
+.bms_btn_warning.bms_btn_plain:hover {
     color: #fff;
     border-color: #e6a23c;
     background-color: #e6a23c;
 }
 
-.btn_danger.btn_plain {
+.bms_btn_danger.bms_btn_plain {
     color: #f56c6c;
     background-color: #fef0f0;
     border-color: #fbc4c4;
 }
 
-.btn_danger.btn_plain:hover {
+.bms_btn_danger.bms_btn_plain:hover {
     color: #fff;
     border-color: #f56c6c;
     background-color: #f56c6c;
@@ -171,34 +171,34 @@
 
 /* ---------- 虚线按钮 ---------- */
 
-.btn.btn_dashed {
+.bms_btn.bms_btn_dashed {
     border-style: dashed;
 }
 
-.btn.btn_dashed:hover {
+.bms_btn.bms_btn_dashed:hover {
     border-style: dashed;
 }
 
 
 /* ---------- 不同尺寸按钮 ---------- */
 
-.btn.btn_lg {
+.bms_btn.bms_btn_lg {
     padding: 12px 20px;
 }
 
-.btn.btn_sm {
+.bms_btn.bms_btn_sm {
     padding: 9px 15px;
     font-size: 12px;
     border-radius: 3px;
 }
 
-.btn.btn_xs {
+.bms_btn.bms_btn_xs {
     padding: 7px 15px;
     font-size: 12px;
     border-radius: 3px;
 }
 
-.btn.btn_block {
+.bms_btn.bms_btn_block {
     display: block;
     width: 100%;
 }
@@ -206,32 +206,32 @@
 
 /* ---------- 圆角按钮 ---------- */
 
-.btn.btn_round {
+.bms_btn.bms_btn_round {
     border-radius: 20px;
 }
 
 
 /* ---------- 图标按钮 ---------- */
 
-.btn.btn_circle .btn_icon {
+.bms_btn.bms_btn_circle .bms_btn_icon {
     margin-right: 0px;
 }
 
-.btn.btn_circle {
+.bms_btn.bms_btn_circle {
     padding: 10px;
     border-radius: 50%;
 }
 
-.btn.btn_circle.btn_lg {
+.bms_btn.bms_btn_circle.bms_btn_lg {
     padding: 12px;
 }
 
-.btn.btn_circle.btn_sm {
+.bms_btn.bms_btn_circle.bms_btn_sm {
     padding: 9px;
     font-size: 10px;
 }
 
-.btn.btn_circle.btn_xs {
+.bms_btn.bms_btn_circle.bms_btn_xs {
     padding: 7px;
     font-size: 10px;
 }
@@ -239,7 +239,7 @@
 
 /* ---------- 禁用按钮-默认按钮 ---------- */
 
-.btn:disabled {
+.bms_btn:disabled {
     color: #c0c4cc;
     border-color: #ebeef5;
     background-color: #fff;
@@ -247,31 +247,31 @@
     cursor: not-allowed;
 }
 
-.btn_primary:disabled {
+.bms_btn_primary:disabled {
     color: #fff;
     border-color: #a0cfff;
     background-color: #a0cfff;
 }
 
-.btn_success:disabled {
+.bms_btn_success:disabled {
     color: #fff;
     border-color: #b3e19d;
     background-color: #b3e19d;
 }
 
-.btn_info:disabled {
+.bms_btn_info:disabled {
     color: #fff;
     border-color: #c8c9cc;
     background-color: #c8c9cc;
 }
 
-.btn_warning:disabled {
+.bms_btn_warning:disabled {
     color: #fff;
     background-color: #f3d19e;
     border-color: #f3d19e;
 }
 
-.btn_danger:disabled {
+.bms_btn_danger:disabled {
     color: #fff;
     background-color: #fab6b6;
     border-color: #fab6b6;
@@ -280,37 +280,37 @@
 
 /* ---------- 禁用按钮-边框按钮 ---------- */
 
-.btn.btn_plain:disabled {
+.bms_btn.bms_btn_plain:disabled {
     background-color: #fff;
     border-color: #ebeef5;
     color: #c0c4cc;
 }
 
-.btn_primary.btn_plain:disabled {
+.bms_btn_primary.bms_btn_plain:disabled {
     color: #8cc5ff;
     background-color: #ecf5ff;
     border-color: #d9ecff;
 }
 
-.btn_success.btn_plain:disabled {
+.bms_btn_success.bms_btn_plain:disabled {
     color: #a4da89;
     background-color: #f0f9eb;
     border-color: #e1f3d8;
 }
 
-.btn_info.btn_plain:disabled {
+.bms_btn_info.bms_btn_plain:disabled {
     color: #bcbec2;
     background-color: #f4f4f5;
     border-color: #e9e9eb;
 }
 
-.btn_warning.btn_plain:disabled {
+.bms_btn_warning.bms_btn_plain:disabled {
     color: #f0c78a;
     background-color: #fdf6ec;
     border-color: #faecd8;
 }
 
-.btn_danger.btn_plain:disabled {
+.bms_btn_danger.bms_btn_plain:disabled {
     color: #f9a7a7;
     background-color: #fef0f0;
     border-color: #fde2e2;

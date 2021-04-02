@@ -1,20 +1,20 @@
 $(function() {
     /**内容-全局下拉列表 */
-    $('#content .dropdown_wrapper').Dropdown({
+    $('#bms_content .dropdown_wrapper').BmsDropdown({
         method: 'click'
     });
 
     /**内容-选项卡*/
-    $.swiper_tab({
-        tabTitleWrapper: '#content .tab_title_wrapper',
-        tabMainWrapper: '#content .tab_main_wrapper',
+    $.bms_swiper_tab({
+        tabTitleWrapper: '#bms_content .tab_title_wrapper',
+        tabMainWrapper: '#bms_content .tab_main_wrapper',
     });
-    $.swiper_tab({
-        tabTitleWrapper: '#content .dropdown_wrapper .tab_title_wrapper',
-        tabMainWrapper: '#content .dropdown_wrapper .tab_main_wrapper'
+    $.bms_swiper_tab({
+        tabTitleWrapper: '#bms_content .dropdown_wrapper .tab_title_wrapper',
+        tabMainWrapper: '#bms_content .dropdown_wrapper .tab_main_wrapper'
     });
-    $('body').JaGrid();
-    $('body').JaSelect();
+    $('body').BmsGrid();
+    $('body').BmsSelect();
     const bodyOpts = $('body').find('option');
     // console.log(bodyOpts);
     // if (bodyOpts.length > 0) {
