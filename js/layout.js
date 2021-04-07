@@ -64,7 +64,7 @@ $(function() {
     });
     /**E-关闭所有*/
     // 电脑屏幕小于1400时左侧导航自动收起
-    if ($(window).width() <= 1400) $('.header_btn').click();
+    if (windowW <= 1400) $('.header_btn').click();
 
 
 });

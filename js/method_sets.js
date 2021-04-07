@@ -374,38 +374,44 @@
             init();
         },
         /**栅格 */
-        BmsGrid: function(options) {
-            const defOpts = {
-                    pattern: /\d+/
-                },
-                opts = $.extend({}, defOpts, options),
-                init = function() {
-                    for (const i of $('.bms_row')) { // 获取页面带有class=bms_row的元素，循环
-                        const rowAttrStr = $(i).attr('class');
-                        let colSpaceVal = rowAttrStr.match(opts.pattern); // 正则匹配获取子元素左右边距
-                        if (colSpaceVal) {
-                            colSpaceVal = colSpaceVal[0].match(/^\d{1,2}/);
-                            $(i).children().css({
-                                'padding': '0 ' + colSpaceVal / 2 + 'px',
-                            });
-                        }
-                        for (const j of $(i).children()) { // 获取页面带有class=bms_row的子元素，循环
-                            const colAttrStr = $(j).attr('class');
-                            let colVal = colAttrStr.match(opts.pattern); // 正则匹配获取子元素宽度
-                            if (colVal) {
-                                if (colVal[0].match(/^\d{1,2}/) > 12) colVal = colVal[0].match(/^\d{1}/);
-                                else colVal = colVal[0].match(/^\d{1,2}/);
-                            } else {
-                                if (!$(j).siblings().length) colVal = 12;
-                                else colVal = 1;
-                            }
-                            $(j).css({
-                                'flex': '0 0' + 100 / 12 * colVal + '%',
-                                'max-width': 100 / 12 * colVal + '%',
-                            });
-                        }
+        BmsGrid: function() {
+            const init = function() {
+                for (const i of $('.bms_row')) { // 获取页面带有class=bms_row的元素，循环
+                    const rowAttrStr = $(i).attr('class');
+                    let colSpaceVal = rowAttrStr.match(/\d+/); // 正则匹配获取子元素左右边距
+                    if (colSpaceVal) {
+                        colSpaceVal = colSpaceVal[0].match(/^\d{1,2}/);
+                        $(i).children().css({
+                            'padding': '0 ' + colSpaceVal / 2 + 'px',
+                        });
                     }
-                };
+                    for (const j of $(i).children()) { // 获取页面带有class=bms_row的子元素，循环
+                        // 先判断屏幕大小，然后再决定用哪个？
+                        const colAttrStr = $(j).attr('class'),
+                            md = colAttrStr.match(/md\d/),
+                            lg = colAttrStr.match(/lg\d/),
+                            xl = colAttrStr.match(/_xl\d/),
+                            xxl = colAttrStr.match(/xxl\d/) || colAttrStr.match(/col\d+/);
+                        let colVal = xxl; // 正则匹配获取子元素宽度
+                        if (windowW < 960) {
+                            console.log(960)
+                            colVal = md || lg || xl || xxl; // md
+                        } else if (windowW < 1200) colVal = lg || xl || xxl; // lg
+                        else if (windowW < 1600) colVal = xl || xxl; // xl 
+                        if (colVal) {
+                            if (colVal[0].match(/\d{1,2}/) > 12) colVal = colVal[0].match(/^\d{1}/);
+                            else colVal = colVal[0].match(/\d{1,2}/);
+                        } else {
+                            if (!$(j).siblings().length) colVal = 12;
+                            else colVal = 1;
+                        }
+                        $(j).css({
+                            'flex': '0 0' + 100 / 12 * colVal + '%',
+                            'max-width': 100 / 12 * colVal + '%',
+                        });
+                    }
+                }
+            };
             init();
             return {};
         },
