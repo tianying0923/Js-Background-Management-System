@@ -391,13 +391,12 @@
                             md = colAttrStr.match(/md\d/),
                             lg = colAttrStr.match(/lg\d/),
                             xl = colAttrStr.match(/_xl\d/),
-                            xxl = colAttrStr.match(/xxl\d/) || colAttrStr.match(/col\d+/);
-                        let colVal = xxl; // 正则匹配获取子元素宽度
-                        if (windowW < 960) {
-                            console.log(960)
-                            colVal = md || lg || xl || xxl; // md
-                        } else if (windowW < 1200) colVal = lg || xl || xxl; // lg
-                        else if (windowW < 1600) colVal = xl || xxl; // xl 
+                            def = colAttrStr.match(/col\d+/);
+                        let colVal = def; // 正则匹配获取子元素宽度
+                        if (windowW < 1200) {
+                            colVal = md || lg || xl || def; // md
+                        } else if (windowW < 1600) colVal = lg || xl || def; // lg
+                        else if (windowW < 1600) colVal = xl || def; // xl 
                         if (colVal) {
                             if (colVal[0].match(/\d{1,2}/) > 12) colVal = colVal[0].match(/^\d{1}/);
                             else colVal = colVal[0].match(/\d{1,2}/);

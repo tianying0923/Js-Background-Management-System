@@ -15,7 +15,7 @@ $(function() {
     });
     $('body').BmsGrid();
     $('body').BmsSelect();
-    const bodyOpts = $('body').find('option');
+    // const bodyOpts = $('body').find('option');
     // console.log(bodyOpts);
     // if (bodyOpts.length > 0) {
     //     for (const i of bodyOpts) {
