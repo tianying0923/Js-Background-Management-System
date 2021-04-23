@@ -424,9 +424,9 @@
                     selectAll: false
                 },
                 opts = $.extend({}, defOpts, options),
+                single = $('.form_select_single'), // 单选
+                multiples = $('.form_select_multiple'), // 多选
                 init = function() {
-                    const single = $('.form_select_single'), // 单选
-                        multiples = $('.form_select_multiple'); // 多选
                     for (const i of single) {
                         $(i).multipleSelect({
                             single: true,
@@ -460,9 +460,15 @@
                             },
                         });
                     }
+                },
+                uncheckAll = function() {
+                    single.multipleSelect('uncheckAll');
+                    multiples.multipleSelect('uncheckAll');
                 };
             init();
-            return {};
+            return {
+                uncheckAll: uncheckAll
+            };
         }
     });
 

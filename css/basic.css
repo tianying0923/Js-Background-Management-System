@@ -1,6 +1,7 @@
+@charset "utf-8";
+
 /*basic*/
 
-@charset "utf-8";
 * {
     margin: 0;
     padding: 0;
@@ -43,6 +44,11 @@ select {
     border-radius: 4px;
 }
 
+textarea {
+    resize: none;
+    padding: 8px;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -53,7 +59,10 @@ dl {
     list-style: none;
 }
 
-.text_align_r {
-    text-align: right;
-    width: 100%;
+.show {
+    display: initial!important;
+}
+
+.hide {
+    display: none!important;
 }

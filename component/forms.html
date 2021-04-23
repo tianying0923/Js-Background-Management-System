@@ -13,6 +13,11 @@
             text-align: right;
             line-height: 36px;
         }
+        
+        .form_lable.required::before {
+            content: '* ';
+            color: #f00;
+        }
         /* ---------- 多选框 ---------- */
         
         .bms_form_item .ms-choice {
@@ -66,7 +71,12 @@
         }
         
         .form_radio_wrap input {
-            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .form_radio_wrap label {
+            cursor: pointer;
+            padding-left: 5px;
         }
         
         .form_radio_wrap input:disabled+label {
@@ -75,7 +85,7 @@
         }
         /* ---------- 多选框 ---------- */
         
-        .bms_form_item .form_checkbox_wrap {
+        .form_checkbox_wrap {
             position: relative;
             display: inline-block;
         }
@@ -87,6 +97,7 @@
         .form_checkbox_wrap label {
             position: relative;
             padding-left: 18px;
+            cursor: pointer;
         }
         
         .form_checkbox_wrap label:before {
@@ -102,6 +113,7 @@
             transition: all 0.3s ease;
             -webkit-transition: all 0.3s ease;
             -moz-transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .form_checkbox_wrap label:after {
@@ -147,6 +159,7 @@
         
         .form_switch_wrap {
             position: relative;
+            height: 100%;
         }
         
         .form_switch_wrap input[type='checkbox'] {
@@ -165,6 +178,7 @@
             border: 1px solid #dcdfe6;
             box-sizing: border-box;
             background-color: #fff;
+            cursor: pointer;
         }
         
         .form_switch_wrap label::before {
@@ -243,6 +257,13 @@
             height: 28px;
             line-height: 28px;
         }
+        /* ---------- 提示 ---------- */
+        
+        .bms_form_item input+.required_info {
+            color: #f00;
+            margin-top: 3px;
+            display: none;
+        }
     </style>
     <div class="wrap">
         <div class="code_block">
@@ -252,18 +273,20 @@
             <form action="#" class="bms_form">
                 <div class="bms_row bms_form_item bms_row_space20">
                     <div class="bms_col bms_col2">
-                        <label class="form_lable">账号</label>
+                        <label class="form_lable required">账号</label>
                     </div>
                     <div class="bms_col bms_col7">
                         <input class="form_input" type="text" placeholder="请输入账号">
+                        <p class="required_info show">账号必填</p>
                     </div>
                 </div>
                 <div class="bms_row bms_form_item bms_row_space20">
                     <div class="bms_col bms_col2">
-                        <label class="form_lable">密码</label>
+                        <label class="form_lable required">密码</label>
                     </div>
                     <div class="bms_col bms_col6">
                         <input class="form_input" type="password" placeholder="请输入密码">
+                        <p class="required_info">密码必填</p>
                     </div>
                     <div class="bms_col bms_col2 form_tips">
                         辅助文字
@@ -321,15 +344,15 @@
                     </div>
                     <div class="bms_col bms_col7">
                         <div class="bms_row bms_row_space5">
-                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4 ">
+                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
                                 <input type='checkbox' id='checkbox1' name='checkboox[]'>
                                 <label for='checkbox1'>唱歌</label>
                             </div>
-                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4 ">
+                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
                                 <input type='checkbox' id='checkbox2' name='checkboox[]'>
                                 <label for='checkbox2'>跳舞</label>
                             </div>
-                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4 ">
+                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
                                 <input type='checkbox' id='checkbox3' name='checkboox[]' disabled>
                                 <label for='checkbox3'>阅读</label>
                             </div>
@@ -347,10 +370,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="form_switch_wrap">
-                        <input type="checkbox" id="default_switch">
-                        <label for="default_switch" class="form_lable"></label>
-                    </div> -->
                 <div class="bms_row bms_form_item bms_row_space20">
                     <div class="bms_col bms_col2">
                         <label class="form_lable">描述</label>
@@ -359,16 +378,15 @@
                         <textarea name="" id="" class="form_textarea"></textarea>
                     </div>
                 </div>
-                <!-- <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">爱好</label>
+                <div class="bms_row bms_form_item bms_row_space20">
+                    <div class="bms_col bms_col2"></div>
+                    <div class="bms_col bms_col bms_col_md2">
+                        <input type="submit" value="提交" class="bms_btn bms_btn_primary">
                     </div>
-                    <div class="bms_col bms_col7">
-                        <div >
-                            <textarea name="" id=""></textarea>
-                        </div>
+                    <div class="bms_col bms_col bms_col_md2">
+                        <input type="reset" value="重置" class="bms_btn">
                     </div>
-                </div> -->
+                </div>
             </form>
             <xmp>
                 <button type="button" class="btn">
@@ -380,16 +398,16 @@
             <fieldset>
                 <legend>输入框</legend>
             </fieldset>
-            <form action="#">
-                <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">禁用输入框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <input class="form_input" type="text" placeholder="请输入随便" disabled>
-                    </div>
+            <!-- <form action="#"> -->
+            <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                <div class="bms_col bms_col2">
+                    <label class="form_lable">禁用输入框</label>
                 </div>
-            </form>
+                <div class="bms_col bms_col7">
+                    <input class="form_input" type="text" placeholder="请输入随便" disabled>
+                </div>
+            </div>
+            <!-- </form> -->
         </div>
         <div class="code_block">
             <fieldset>
@@ -684,9 +702,9 @@
                                 <label class="form_lable">默认</label>
                             </div>
                             <div class="bms_col bms_col6">
-                                <div class="form_switch_wrap bms_col bms_col4">
-                                    <input type="checkbox" id="default_switch">
-                                    <label for="default_switch" class="form_lable"></label>
+                                <div class="form_switch_wrap">
+                                    <input type="checkbox" id="default_switch1">
+                                    <label for="default_switch1" class="form_lable"></label>
                                 </div>
                             </div>
                         </div>
@@ -697,9 +715,9 @@
                                 <label class="form_lable">禁用</label>
                             </div>
                             <div class="bms_col bms_col6">
-                                <div class="form_switch_wrap bms_col bms_col4">
-                                    <input type="checkbox" id="default_switch1" disabled>
-                                    <label for="default_switch1" class="form_lable"></label>
+                                <div class="form_switch_wrap">
+                                    <input type="checkbox" id="default_switch2" disabled>
+                                    <label for="default_switch2" class="form_lable"></label>
                                 </div>
                             </div>
                         </div>

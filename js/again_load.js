@@ -14,13 +14,21 @@ $(function() {
         tabMainWrapper: '#bms_content .dropdown_wrapper .tab_main_wrapper'
     });
     $('body').BmsGrid();
-    $('body').BmsSelect();
-    // const bodyOpts = $('body').find('option');
-    // console.log(bodyOpts);
-    // if (bodyOpts.length > 0) {
-    //     for (const i of bodyOpts) {
-    //         console.log(i)
-    //         if ($(i).val() === '0') $(i).remove();
-    //     }
-    // }
+    var bmsSelect = $('body').BmsSelect();
+    /**表单-重置 */
+    $('form input[type="reset"]').click(function() {
+        bmsSelect.uncheckAll();
+    });
+    /**表单-提交 */
+    $('form input[type="submit"]').click(function() {
+        console.log(123);
+        console.log($('form'))
+            // for (var i of formC) {
+            //     if ($(i).find('.form_lable').hasClass('required')) {
+            //         $(i)
+            //     }
+            // }
+            // .ch('.bms_form_item')
+        return false;
+    });
 });

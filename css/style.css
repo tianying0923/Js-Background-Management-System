@@ -156,11 +156,12 @@ sup.dot_num {
 }
 
 .bms_col {
-    display: flex;
+    /* display: flex; */
     word-break: break-all;
     word-wrap: break-word;
     white-space: normal;
     box-sizing: border-box;
+    /* position: relative; */
 }
 
 .bms_col div {
