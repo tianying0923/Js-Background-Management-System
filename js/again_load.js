@@ -13,22 +13,23 @@ $(function() {
         tabTitleWrapper: '#bms_content .dropdown_wrapper .tab_title_wrapper',
         tabMainWrapper: '#bms_content .dropdown_wrapper .tab_main_wrapper'
     });
+
+    /**栅格*/
     $('body').BmsGrid();
     var bmsSelect = $('body').BmsSelect();
+
     /**表单-重置 */
     $('form input[type="reset"]').click(function() {
+        $(this).parents('form').find('.required_info').removeClass('show');
         bmsSelect.uncheckAll();
     });
     /**表单-提交 */
     $('form input[type="submit"]').click(function() {
-        console.log(123);
-        console.log($('form'))
-            // for (var i of formC) {
-            //     if ($(i).find('.form_lable').hasClass('required')) {
-            //         $(i)
-            //     }
-            // }
-            // .ch('.bms_form_item')
+        var formChildren = $(this).parents('form').children();
+        for (var i of formChildren) {
+            if ($(i).find('.form_lable').hasClass('required') && (!$(i).find('.required_info').prev().val() || $(i).find('.required_info').prev().val() == ''))
+                $(i).find('.required_info').addClass('show');
+        }
         return false;
     });
 });

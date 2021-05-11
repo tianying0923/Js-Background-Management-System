@@ -259,7 +259,7 @@
         }
         /* ---------- 提示 ---------- */
         
-        .bms_form_item input+.required_info {
+        .bms_form_item .required_info {
             color: #f00;
             margin-top: 3px;
             display: none;
@@ -307,7 +307,7 @@
                 </div>
                 <div class="bms_row bms_form_item bms_row_space20">
                     <div class="bms_col bms_col2">
-                        <label class="form_lable">语言</label>
+                        <label class="form_lable required">语言</label>
                     </div>
                     <div class="bms_col bms_col7">
                         <select class="form_select form_select_multiple" multiple>
@@ -315,11 +315,12 @@
                             <option value="2">日语</option>
                             <option value="2">德语</option>
                         </select>
+                        <p class="required_info">语言必填</p>
                     </div>
                 </div>
                 <div class="bms_row bms_form_item bms_row_space20">
                     <div class="bms_col bms_col2">
-                        <label class="form_lable">性别</label>
+                        <label class="form_lable required">性别</label>
                     </div>
                     <div class="bms_col bms_col7">
                         <div class="bms_row bms_row_space5">
@@ -336,6 +337,7 @@
                                 <label for="unknown">不详</label>
                             </div>
                         </div>
+                        <p class="required_info">性别必填</p>
                     </div>
                 </div>
                 <div class="bms_row bms_form_item bms_row_space20">
