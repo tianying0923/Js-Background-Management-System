@@ -92,6 +92,8 @@ sup.dot_num {
 
 /* ---------- 选项卡 ---------- */
 
+.tab_wrapper {}
+
 .tab_title_wrapper .swiper-wrapper {
     background-color: #F5F7FA;
     border-bottom: 1px solid #E4E7ED;
@@ -115,11 +117,15 @@ sup.dot_num {
     color: #409EFF;
 }
 
-.tab_title_wrapper .tab_active {
+.tab_title_wrapper .swiper-slide-thumb-active {
     color: #409EFF;
     background-color: #FFF;
     border-right-color: #DCDFE6;
     border-left-color: #DCDFE6;
+}
+
+.tab_main_wrapper .swiper-container {
+    height: auto;
 }
 
 .tab_main_wrapper .swiper-slide {
@@ -138,7 +144,7 @@ sup.dot_num {
     border: none;
 }
 
-.dropdown_wrapper .dropdown_hide .tab_title_wrapper .tab_active {
+.dropdown_wrapper .dropdown_hide .tab_title_wrapper .swiper-slide-thumb-active {
     color: #409EFF;
     background-color: #FFF;
     border-bottom-color: #409EFF;

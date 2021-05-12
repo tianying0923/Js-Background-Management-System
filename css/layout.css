@@ -224,7 +224,7 @@
 }
 
 #bms_content .wrap {
-    padding: 20px;
+    padding: 15px;
 }
 
 
@@ -292,7 +292,7 @@
     white-space: nowrap;
 }
 
-#bms_tabs .swiper-slide.tab_active::after {
+#bms_tabs .swiper-slide.swiper-slide-thumb-active::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -302,11 +302,11 @@
     background-color: #409eff;
 }
 
-#bms_tabs .swiper-slide.tab_active a {
+#bms_tabs .swiper-slide.swiper-slide-thumb-active a {
     color: #1890ff;
 }
 
-#bms_tabs .swiper-slide.tab_active i {
+#bms_tabs .swiper-slide.swiper-slide-thumb-active i {
     display: inline-block;
 }
 

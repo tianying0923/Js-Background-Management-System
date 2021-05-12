@@ -19,3 +19,7 @@
 4.全屏插件
 - 使用版本：4.2.1
 - 网址：https://www.npmjs.com/package/screenfull
+
+4.日期插件
+- 使用版本：1.0.0
+- 网址：https://github.com/qiuyaofan/datepicker

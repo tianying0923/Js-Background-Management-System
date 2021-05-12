@@ -481,7 +481,6 @@ jQuery.extend({
      */
     bms_swiper_tab: function(options) {
         let opts = {
-                tabClicked: options.tabClicked || 'tab_active',
                 effect: options.effect || 'fade',
             },
             tabTitle, tabMain;
@@ -514,18 +513,15 @@ jQuery.extend({
                     slidesPerView: 'auto',
                     allowSlideNext: false, // 禁止向右或下滑动
                     allowSlidePrev: false, // 禁止向左或上滑动
-                    on: {
-                        click: function() {
-                            tabMain.slideTo(tabTitle.clickedIndex)
-                        }
-                    }
                 });
                 tabMain = new Swiper(opts.tabMainWrapper, {
-                    effect: opts.effect,
-                    on: {
-                        slideChangeTransitionStart: function() {
-                            $(opts.tabTitleWrapper).find('.swiper-slide').removeClass(opts.tabClicked).eq(tabMain.activeIndex).addClass(opts.tabClicked);
-                        }
+                    autoHeight: true, // 自动高度
+                    effect: opts.effect, // 淡入淡出
+                    fadeEffect: {
+                        crossFade: true, // 开启淡出效果
+                    },
+                    thumbs: {
+                        swiper: tabTitle
                     }
                 });
             };
