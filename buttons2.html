@@ -7,8 +7,8 @@
             </fieldset>
             <xmp>
                 <button type="button" class="bms_btn">
-                        <span>default</span>
-                    </button>
+                    <span>default</span>
+                </button>
             </xmp>
         </div>
     </div>
@@ -23,6 +23,21 @@
                 </div>
                 <div class="swiper-slide tab_item">
                     圆角按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    不同尺寸按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    块级按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    图标按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    禁用按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    按钮组
                 </div>
             </div>
         </div>
@@ -216,17 +231,204 @@
                     </div>
                 </div>
                 <div class="swiper-slide tab_item">
-                    内容3
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>不同尺寸按钮</legend>
+                        </fieldset>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>展示</th>
+                                    <th>类名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_plain bms_btn_dashed bms_btn_lg">
+                                                    <span>default</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_plain bms_btn_dashed bms_btn_lg"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_primary">
+                                                    <span>primary</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_primary"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_success bms_btn_plain bms_btn_sm">
+                                                    <span>success</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_success bms_btn_plain bms_btn_sm"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_info bms_btn_xs">
+                                                    <span>info</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_info bms_btn_xs"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_warning bms_btn_plain bms_btn_round bms_btn_xs">
+                                                    <span>warning</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_warning bms_btn_plain bms_btn_round bms_btn_xs"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_danger bms_btn_circle  bms_btn_xs">
+                                                    <i class="fa fa-exclamation-triangle bms_btn_icon" ></i> 
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_danger bms_btn_plain bms_btn_round bms_btn_xs"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="swiper-slide tab_item">
-                    内容3
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>块级按钮</legend>
+                        </fieldset>
+                        <xmp>
+                            <button type="button" class="bms_btn bms_btn_primary bms_btn_block">              
+                                <span>block</span>
+                            </button>
+                        </xmp>
+                        <button type="button" class="bms_btn bms_btn_primary bms_btn_block">              
+                                    <span>block</span>
+                            </button>
+                    </div>
                 </div>
                 <div class="swiper-slide tab_item">
-                    内容3
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>图标按钮</legend>
+                        </fieldset>
+                        <xmp>
+                            <button type="button" class="bms_btn bms_btn_primary bms_btn_round">
+                                <i class="fa fa-search bms_btn_icon" ></i>
+                                <span>搜索</span>
+                            </button>
+                        </xmp>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>展示</th>
+                                    <th>类名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_dashed bms_btn_circle">
+                                                <i class="fa fa-search bms_btn_icon" ></i>
+                                            </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_dashed bms_btn_circle"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_primary bms_btn_round">
+                                                    <i class="fa fa-search bms_btn_icon" ></i>
+                                                    <span>search</span>
+                                            </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_primary bms_btn_round"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_warning bms_btn_xs">
+                                                <i class="fa fa-exclamation bms_btn_icon" ></i> 
+                                                <span>warning</span>
+                                            </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_warning bms_btn_xs"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div class="swiper-slide tab_item">
-                    内容3
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>禁用按钮</legend>
+                        </fieldset>
+                        <xmp>
+                            <button type="button" class="bms_btn bms_btn_primary bms_btn_round" disabled>
+                                <i class="fa fa-search bms_btn_icon" ></i>
+                                <span>search</span>
+                            </button>
+                        </xmp>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>展示</th>
+                                    <th>类名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_dashed bms_btn_circle" disabled>
+                                                    <i class="fa fa-search bms_btn_icon" ></i>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_dashed bms_btn_circle"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_primary bms_btn_round" disabled>
+                                                        <i class="fa fa-search bms_btn_icon" ></i>
+                                                        <span>search</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_primary bms_btn_round"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_success bms_btn_plain bms_btn_dashed" disabled>
+                                                            <span>success</span>
+                                                        </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_success bms_btn_plain bms_btn_dashed"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="bms_btn bms_btn_info bms_btn_xs" disabled>
+                                                    <i class="fa fa-info-circle bms_btn_icon" ></i> 
+                                                    <span>info</span>
+                                                </button>
+                                    </td>
+                                    <td>class="bms_btn bms_btn_info bms_btn_xs"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>按钮组</legend>
+                        </fieldset>
+                        <xmp>
+                            <button type="button" class="bms_btn bms_btn_primary bms_btn_round" disabled>
+                                <i class="fa fa-search bms_btn_icon" ></i>
+                                <span>search</span>
+                            </button>
+                        </xmp>
+                    </div>
                 </div>
             </div>
         </div>

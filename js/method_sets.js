@@ -394,6 +394,7 @@
                             def = colAttrStr.match(/col\d+/);
                         let colVal = def; // 正则匹配获取子元素宽度
                         if (windowW < 1200) {
+                            console.log('1200')
                             colVal = md || lg || xl || def; // md
                         } else if (windowW < 1600) colVal = lg || xl || def; // lg
                         else if (windowW < 1600) colVal = xl || def; // xl 
@@ -513,10 +514,15 @@ jQuery.extend({
                     slidesPerView: 'auto',
                     allowSlideNext: false, // 禁止向右或下滑动
                     allowSlidePrev: false, // 禁止向左或上滑动
+                    // simulateTouch: false, // 鼠标拖动无效
                 });
                 tabMain = new Swiper(opts.tabMainWrapper, {
                     autoHeight: true, // 自动高度
                     effect: opts.effect, // 淡入淡出
+                    simulateTouch: false, // 鼠标拖动无效
+                    observer: true,
+                    observeSlideChildren: true, // 子slide更新时，swiper更新
+                    observeParents: true, // 当Swiper的祖先元素变化时，例如window.resize，Swiper更新
                     fadeEffect: {
                         crossFade: true, // 开启淡出效果
                     },

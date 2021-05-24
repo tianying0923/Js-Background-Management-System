@@ -1,731 +1,839 @@
 <body>
-    <style>
-        /* ---------- 默认表单 ---------- */
-        
-        .bms_form_item {
-            margin: 20px 0;
-        }
-        /* ---------- 左侧lable ---------- */
-        
-        .form_lable {
-            display: block;
-            width: 100%;
-            text-align: right;
-            line-height: 36px;
-        }
-        
-        .form_lable.required::before {
-            content: '* ';
-            color: #f00;
-        }
-        /* ---------- 多选框 ---------- */
-        
-        .bms_form_item .ms-choice {
-            position: relative;
-            height: 38px;
-            line-height: 38px;
-            border: 1px solid #dcdfe6;
-        }
-        
-        .bms_form_item .ms-choice>span {
-            padding: 0 15px;
-        }
-        
-        .bms_form_item .ms-choice>div.icon-close {
-            height: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .bms_form_item .ms-choice>div.icon-close:before {
-            margin: 0;
-            top: 0;
-        }
-        
-        .bms_form_item .ms-drop ul>li.hide-radio.selected {
-            background-color: #409eff;
-        }
-        /* ---------- 提示 ---------- */
-        
-        .form_tips {
-            line-height: 36px;
-            color: #999;
-        }
-        /* ---------- 输入框 ---------- */
-        
-        .form_input {
-            display: block;
-            width: 100%;
-            padding: 0 15px;
-            box-sizing: border-box;
-            height: 36px;
-            line-height: 36px;
-        }
-        /* ---------- 单选框 ---------- */
-        
-        .form_radio_wrap,
-        .form_checkbox_wrap {
-            height: 36px;
-            line-height: 36px;
-            align-items: center;
-        }
-        
-        .form_radio_wrap input {
-            cursor: pointer;
-        }
-        
-        .form_radio_wrap label {
-            cursor: pointer;
-            padding-left: 5px;
-        }
-        
-        .form_radio_wrap input:disabled+label {
-            cursor: not-allowed;
-            color: #999;
-        }
-        /* ---------- 多选框 ---------- */
-        
-        .form_checkbox_wrap {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .form_checkbox_wrap input[type='checkbox'] {
-            display: none;
-        }
-        
-        .form_checkbox_wrap label {
-            position: relative;
-            padding-left: 18px;
-            cursor: pointer;
-        }
-        
-        .form_checkbox_wrap label:before {
-            content: '';
-            position: absolute;
-            left: 0px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 11px;
-            height: 11px;
-            border: 1px solid #767676;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            -webkit-transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .form_checkbox_wrap label:after {
-            content: '';
-            position: absolute;
-            left: 4px;
-            top: 50%;
-            transform: translateY(-50%) rotate(45deg);
-            width: 4px;
-            height: 9px;
-            border: 0;
-            border-right: 1px solid #fff;
-            border-bottom: 1px solid #fff;
-            background-color: #fff;
-            transition: all 0.3s ease;
-            -webkit-transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-        }
-        
-        .form_checkbox_wrap input[type='checkbox']:checked+label:before {
-            background: #409eff;
-            border-color: #409eff;
-        }
-        
-        .form_checkbox_wrap input[type='checkbox']:checked+label:after {
-            background: #409eff;
-        }
-        
-        .form_checkbox_wrap input[type='checkbox']:disabled+label {
-            color: #999;
-            cursor: not-allowed;
-        }
-        
-        .form_checkbox_wrap input[type='checkbox']:disabled+label:before {
-            border-color: #D1D1D1;
-            background-color: #F8F8F8;
-        }
-        
-        .form_checkbox_wrap input[type='checkbox']:disabled+label:after {
-            background-color: #F8F8F8;
-        }
-        /* ---------- 开关 ---------- */
-        
-        .form_switch_wrap {
-            position: relative;
-            height: 100%;
-        }
-        
-        .form_switch_wrap input[type='checkbox'] {
-            display: none;
-        }
-        
-        .form_switch_wrap label {
-            position: absolute;
-            width: 50px;
-            height: 22px!important;
-            line-height: 22px!important;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 0;
-            border-radius: 30px;
-            border: 1px solid #dcdfe6;
-            box-sizing: border-box;
-            background-color: #fff;
-            cursor: pointer;
-        }
-        
-        .form_switch_wrap label::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 17px;
-            height: 17px;
-            background-color: #d2d2d2;
-            border-radius: 50%;
-        }
-        
-        .form_switch_wrap input[type='checkbox']:checked+label {
-            background-color: #409eff;
-            border: none;
-        }
-        
-        .form_switch_wrap input[type='checkbox']:checked+label:before {
-            left: 25px;
-            background-color: #fff;
-        }
-        
-        .form_switch_wrap input[type='checkbox']:disabled+label {
-            cursor: not-allowed;
-        }
-        
-        .form_switch_wrap input[type='checkbox']:disabled+label:before {
-            border-color: #D1D1D1;
-            background-color: #F8F8F8;
-        }
-        /* ---------- 文本输入框 ---------- */
-        
-        .form_textarea {
-            display: block;
-            width: 100%;
-            height: 100px;
-        }
-        /* ---------- 禁用 ---------- */
-        
-        input:disabled {
-            background-color: #f4f4f4;
-            border-color: #dcdfe6;
-            color: #999;
-            cursor: not-allowed;
-        }
-        
-        select:disabled,
-        .ms-choice.disabled,
-        .ms-drop ul>li .disabled {
-            cursor: not-allowed;
-        }
-        /* ---------- 不同尺寸表单 ---------- */
-        
-        .bms_form_item.bms_form_item_lg .form_lable,
-        .bms_form_item.bms_form_item_lg .form_input,
-        .bms_form_item.bms_form_item_lg .ms-choice,
-        .bms_form_item.bms_form_item_lg .form_tips {
-            height: 40px;
-            line-height: 40px;
-        }
-        
-        .bms_form_item.bms_form_item_sm .form_lable,
-        .bms_form_item.bms_form_item_sm .form_input,
-        .bms_form_item.bms_form_item_sm .ms-choice,
-        .bms_form_item.bms_form_item_sm .form_tips {
-            height: 32px;
-            line-height: 32px;
-        }
-        
-        .bms_form_item.bms_form_item_xs .form_lable,
-        .bms_form_item.bms_form_item_xs .form_input,
-        .bms_form_item.bms_form_item_xs .ms-choice,
-        .bms_form_item.bms_form_item_xs .form_tips {
-            height: 28px;
-            line-height: 28px;
-        }
-        /* ---------- 提示 ---------- */
-        
-        .bms_form_item .required_info {
-            color: #f00;
-            margin-top: 3px;
-            display: none;
-        }
-    </style>
-    <div class="wrap">
-        <div class="code_block">
-            <fieldset>
-                <legend>展示</legend>
-            </fieldset>
-            <form action="#" class="bms_form">
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable required">账号</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <input class="form_input" type="text" placeholder="请输入账号">
-                        <p class="required_info show">账号必填</p>
-                    </div>
+    <div class="tab_wrapper">
+        <div class="swiper-container tab_title_wrapper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tab_item">
+                    展示
                 </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable required">密码</label>
-                    </div>
-                    <div class="bms_col bms_col6">
-                        <input class="form_input" type="password" placeholder="请输入密码">
-                        <p class="required_info">密码必填</p>
-                    </div>
-                    <div class="bms_col bms_col2 form_tips">
-                        辅助文字
-                    </div>
+                <div class="swiper-slide tab_item">
+                    输入框
                 </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">省份</label>
-                    </div>
-                    <div class="bms_col bms_col7 ">
-                        <select class="form_select_single" multiple>
-                            <option value="1">北</option>
-                            <option value="2">上</option>
-                            <option value="3">广</option>
-                            <option value="4">深</option>
-                        </select>
-                    </div>
+                <div class="swiper-slide tab_item">
+                    不同尺寸表单
                 </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable required">语言</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <select class="form_select form_select_multiple" multiple>
-                            <option value="1">英语</option>
-                            <option value="2">日语</option>
-                            <option value="2">德语</option>
-                        </select>
-                        <p class="required_info">语言必填</p>
-                    </div>
+                <div class="swiper-slide tab_item">
+                    下拉框-单/多选
                 </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable required">性别</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
-                                <input type="radio" name="sex" id="man">
-                                <label for="man">男</label>
-                            </div>
-                            <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
-                                <input type="radio" name="sex" id="woman">
-                                <label for="woman">女</label>
-                            </div>
-                            <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
-                                <input type="radio" name="sex" id="unknown" disabled>
-                                <label for="unknown">不详</label>
-                            </div>
-                        </div>
-                        <p class="required_info">性别必填</p>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">爱好</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
-                                <input type='checkbox' id='checkbox1' name='checkboox[]'>
-                                <label for='checkbox1'>唱歌</label>
-                            </div>
-                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
-                                <input type='checkbox' id='checkbox2' name='checkboox[]'>
-                                <label for='checkbox2'>跳舞</label>
-                            </div>
-                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
-                                <input type='checkbox' id='checkbox3' name='checkboox[]' disabled>
-                                <label for='checkbox3'>阅读</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">开关</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="form_switch_wrap">
-                            <input type="checkbox" id="default_switch">
-                            <label for="default_switch" class="form_lable"></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">描述</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <textarea name="" id="" class="form_textarea"></textarea>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2"></div>
-                    <div class="bms_col bms_col bms_col_md2">
-                        <input type="submit" value="提交" class="bms_btn bms_btn_primary">
-                    </div>
-                    <div class="bms_col bms_col bms_col_md2">
-                        <input type="reset" value="重置" class="bms_btn">
-                    </div>
-                </div>
-            </form>
-            <xmp>
-                <button type="button" class="btn">
-                    <span>default</span>
-                </button>
-            </xmp>
-        </div>
-        <div class="code_block">
-            <fieldset>
-                <legend>输入框</legend>
-            </fieldset>
-            <!-- <form action="#"> -->
-            <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
-                <div class="bms_col bms_col2">
-                    <label class="form_lable">禁用输入框</label>
-                </div>
-                <div class="bms_col bms_col7">
-                    <input class="form_input" type="text" placeholder="请输入随便" disabled>
+                <div class="swiper-slide tab_item">
+                    开关
                 </div>
             </div>
-            <!-- </form> -->
         </div>
-        <div class="code_block">
-            <fieldset>
-                <legend>不同尺寸表单</legend>
-            </fieldset>
-            <form action="#">
-                <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">输入框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <input class="form_input" type="text" placeholder="请输入随便">
+        <div class="swiper-container tab_main_wrapper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>展示</legend>
+                        </fieldset>
+                        <form action="#" class="bms_form">
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable required">账号</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <input class="form_input" type="text" placeholder="请输入账号">
+                                    <p class="required_info show">账号必填</p>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable required">密码</label>
+                                </div>
+                                <div class="bms_col bms_col6">
+                                    <input class="form_input" type="password" placeholder="请输入密码">
+                                    <p class="required_info">密码必填</p>
+                                </div>
+                                <div class="bms_col bms_col2 form_tips">
+                                    辅助文字
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">省份</label>
+                                </div>
+                                <div class="bms_col bms_col7 ">
+                                    <select class="form_select_single" multiple>
+                                        <option value="1">北</option>
+                                        <option value="2">上</option>
+                                        <option value="3">广</option>
+                                        <option value="4">深</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable required">语言</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <select class="form_select form_select_multiple" multiple>
+                                        <option value="1">英语</option>
+                                        <option value="2">日语</option>
+                                        <option value="2">德语</option>
+                                    </select>
+                                    <p class="required_info">语言必填</p>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable required">性别</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                            <input type="radio" name="sex" id="man">
+                                            <label for="man">男</label>
+                                        </div>
+                                        <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                            <input type="radio" name="sex" id="woman">
+                                            <label for="woman">女</label>
+                                        </div>
+                                        <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                            <input type="radio" name="sex" id="unknown" disabled>
+                                            <label for="unknown">不详</label>
+                                        </div>
+                                    </div>
+                                    <p class="required_info">性别必填</p>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">爱好</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                            <input type='checkbox' id='checkbox1' name='checkboox[]'>
+                                            <label for='checkbox1'>唱歌</label>
+                                        </div>
+                                        <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                            <input type='checkbox' id='checkbox2' name='checkboox[]'>
+                                            <label for='checkbox2'>跳舞</label>
+                                        </div>
+                                        <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                            <input type='checkbox' id='checkbox3' name='checkboox[]' disabled>
+                                            <label for='checkbox3'>阅读</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">开关</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="form_switch_wrap">
+                                        <input type="checkbox" id="default_switch">
+                                        <label for="default_switch" class="form_lable"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">描述</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <textarea name="" id="" class="form_textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2"></div>
+                                <div class="bms_col bms_col bms_col_md2">
+                                    <input type="submit" value="提交" class="bms_btn bms_btn_primary">
+                                </div>
+                                <div class="bms_col bms_col bms_col_md2">
+                                    <input type="reset" value="重置" class="bms_btn">
+                                </div>
+                            </div>
+                        </form>
+                        <xmp>
+                            <form action="#" class="bms_form">
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable required">账号</label>
+                                    </div>
+                                    <div class="bms_col bms_col7">
+                                        <input class="form_input" type="text" placeholder="请输入账号">
+                                        <p class="required_info show">账号必填</p>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable required">密码</label>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <input class="form_input" type="password" placeholder="请输入密码">
+                                        <p class="required_info">密码必填</p>
+                                    </div>
+                                    <div class="bms_col bms_col2 form_tips">
+                                        辅助文字
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable">省份</label>
+                                    </div>
+                                    <div class="bms_col bms_col7 ">
+                                        <select class="form_select_single" multiple>
+                                            <option value="1">北</option>
+                                            <option value="2">上</option>
+                                            <option value="3">广</option>
+                                            <option value="4">深</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable required">语言</label>
+                                    </div>
+                                    <div class="bms_col bms_col7">
+                                        <select class="form_select form_select_multiple" multiple>
+                                            <option value="1">英语</option>
+                                            <option value="2">日语</option>
+                                            <option value="2">德语</option>
+                                        </select>
+                                        <p class="required_info">语言必填</p>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable required">性别</label>
+                                    </div>
+                                    <div class="bms_col bms_col7">
+                                        <div class="bms_row bms_row_space5">
+                                            <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                                <input type="radio" name="sex" id="man">
+                                                <label for="man">男</label>
+                                            </div>
+                                            <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                                <input type="radio" name="sex" id="woman">
+                                                <label for="woman">女</label>
+                                            </div>
+                                            <div class="form_radio_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                                <input type="radio" name="sex" id="unknown" disabled>
+                                                <label for="unknown">不详</label>
+                                            </div>
+                                        </div>
+                                        <p class="required_info">性别必填</p>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable">爱好</label>
+                                    </div>
+                                    <div class="bms_col bms_col7">
+                                        <div class="bms_row bms_row_space5">
+                                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                                <input type='checkbox' id='checkbox1' name='checkboox[]'>
+                                                <label for='checkbox1'>唱歌</label>
+                                            </div>
+                                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                                <input type='checkbox' id='checkbox2' name='checkboox[]'>
+                                                <label for='checkbox2'>跳舞</label>
+                                            </div>
+                                            <div class="form_checkbox_wrap bms_col bms_col1 bms_col_lg2 bms_col_md4">
+                                                <input type='checkbox' id='checkbox3' name='checkboox[]' disabled>
+                                                <label for='checkbox3'>阅读</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable">开关</label>
+                                    </div>
+                                    <div class="bms_col bms_col7">
+                                        <div class="form_switch_wrap">
+                                            <input type="checkbox" id="default_switch">
+                                            <label for="default_switch" class="form_lable"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2">
+                                        <label class="form_lable">描述</label>
+                                    </div>
+                                    <div class="bms_col bms_col7">
+                                        <textarea name="" id="" class="form_textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="bms_row bms_form_item bms_row_space20">
+                                    <div class="bms_col bms_col2"></div>
+                                    <div class="bms_col bms_col bms_col_md2">
+                                        <input type="submit" value="提交" class="bms_btn bms_btn_primary">
+                                    </div>
+                                    <div class="bms_col bms_col bms_col_md2">
+                                        <input type="reset" value="重置" class="bms_btn">
+                                    </div>
+                                </div>
+                            </form>
+                        </xmp>
                     </div>
                 </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">密码框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <input class="form_input" type="password" placeholder="请输入密码框">
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20 bms_form_item_sm">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">下拉框-单选</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <select class="form_select_single" multiple>
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20 bms_form_item_xs">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">下拉框-多选</label>
-                    </div>
-                    <div class="bms_col bms_col6">
-                        <select class="form_select_multiple" multiple>
-                            <option value="1">选项1</option>
-                            <option value="2" >选项2</option>
-                        </select>
-                    </div>
-                    <div class="bms_col bms_col2 form_tips">
-                        辅助文字
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>输入框</legend>
+                        </fieldset>
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">禁用输入框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <input class="form_input" type="text" placeholder="禁用输入框" disabled>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">数字输入框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <input class="form_input" type="number" placeholder="请输入随便">
+                            </div>
+                        </div>
+                        <xmp>
+                            <input class="form_input" type="text" placeholder="禁用输入框" disabled>
+
+                            <input class="form_input" type="number" placeholder="数字输入框">
+                        </xmp>
                     </div>
                 </div>
-            </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>名称</th>
-                        <th>类名</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>大型</td>
-                        <td>class="bms_form_item bms_form_item_lg"</td>
-                    </tr>
-                    <tr>
-                        <td>默认</td>
-                        <td>class="bms_form_item"</td>
-                    </tr>
-                    <tr>
-                        <td>小型</td>
-                        <td>class="bms_form_item bms_form_item_sm"</td>
-                    </tr>
-                    <tr>
-                        <td>迷你</td>
-                        <td>class="bms_form_item bms_form_item_xs"</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="code_block">
-            <fieldset>
-                <legend>下拉框-单/多选</legend>
-            </fieldset>
-            <form action="#">
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">普通下拉框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="bms_col bms_col6">
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>不同尺寸表单</legend>
+                        </fieldset>
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">输入框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <input class="form_input" type="text" placeholder="请输入随便">
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">密码框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <input class="form_input" type="password" placeholder="请输入密码框">
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_sm">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">下拉框-单选</label>
+                            </div>
+                            <div class="bms_col bms_col7">
                                 <select class="form_select_single" multiple>
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
+                                        <option value="1">选项1</option>
+                                        <option value="2" >选项2</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_xs">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">下拉框-多选</label>
                             </div>
                             <div class="bms_col bms_col6">
                                 <select class="form_select_multiple" multiple>
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">能清除的下拉框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_single" multiple data-showclear="true">
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_multiple" multiple data-showclear="true">
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">自定义占位符下拉框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_single" multiple data-placeholder="我是单选框自定义提示！！！">
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_multiple" multiple data-placeholder="我是多选框自定义提示！！！">
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">分组下拉框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_single" multiple>
-                                    <optgroup label="分组1">
                                         <option value="1">选项1</option>
                                         <option value="2" >选项2</option>
-                                    </optgroup>
-                                    <optgroup label="分组2">
-                                        <option value="1">选项1</option>
-                                        <option value="2" >选项2</option>
-                                    </optgroup>
-                                </select>
+                                    </select>
                             </div>
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_multiple" multiple>
-                                    <optgroup label="分组1">
-                                        <option value="1">选项1</option>
-                                        <option value="2" >选项2</option>
-                                    </optgroup>
-                                    <optgroup label="分组2">
-                                        <option value="1">选项1</option>
-                                        <option value="2" >选项2</option>
-                                    </optgroup>
-                                </select>
+                            <div class="bms_col bms_col2 form_tips">
+                                辅助文字
                             </div>
                         </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>类名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>大型</td>
+                                    <td>class="bms_form_item bms_form_item_lg"</td>
+                                </tr>
+                                <tr>
+                                    <td>默认</td>
+                                    <td>class="bms_form_item"</td>
+                                </tr>
+                                <tr>
+                                    <td>小型</td>
+                                    <td>class="bms_form_item bms_form_item_sm"</td>
+                                </tr>
+                                <tr>
+                                    <td>迷你</td>
+                                    <td>class="bms_form_item bms_form_item_xs"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="bms_form_item bms_form_item_lg">
+                            <input class="form_input" type="text" placeholder="请输入随便">
+                        </div>
+                        <xmp>
+                            <div class="bms_form_item bms_form_item_lg">
+                                <input class="form_input" type="text" placeholder="请输入随便">
+                            </div>
+                        </xmp>
                     </div>
                 </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">带搜索的下拉框</label>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>下拉框-单/多选</legend>
+                        </fieldset>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">普通下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_single" multiple>
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_multiple" multiple>
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">能清除的下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_single" multiple data-showclear="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_multiple" multiple data-showclear="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">自定义占位符下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_single" multiple data-placeholder="我是单选框自定义提示！！！">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_multiple" multiple data-placeholder="我是多选框自定义提示！！！">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">分组下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_single" multiple>
+                                                <optgroup label="分组1">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                                <optgroup label="分组2">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_multiple" multiple>
+                                                <optgroup label="分组1">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                                <optgroup label="分组2">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">带搜索的下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col10">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col4">
+                                        <select class="form_select_single" multiple data-filter="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2">选项2</option>
+                                                <option value="3">选项3</option>
+                                                <option value="4">选项4</option>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col4">
+                                        <select class="form_select_multiple" multiple data-filter="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2">选项2</option>
+                                                <option value="3">选项3</option>
+                                                <option value="4">选项4</option>
+                                                <option value="5">选项5</option>
+                                                <option value="6">选项6</option>
+                                                <option value="7">选项7</option>
+                                                <option value="8">选项8</option>
+                                                <option value="9">选项9</option>
+                                                <option value="10">选项10</option>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col4">
+                                        <select class="form_select_multiple" multiple data-filter="true" data-filtergroup="true" data-placeholder="过滤分组！！！">
+                                                <optgroup label="分组1">
+                                                        <option value="1">选项1</option>
+                                                        <option value="2" >选项2</option>
+                                                    </optgroup>
+                                                    <optgroup label="分组2">
+                                                        <option value="1">选项1</option>
+                                                        <option value="2" >选项2</option>
+                                                    </optgroup>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">禁用下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_single" multiple disabled>
+                                                <optgroup label="分组1">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                                <optgroup label="分组2">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_multiple" multiple disabled>
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">禁用选项下拉框</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <div class="bms_row bms_row_space5">
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_single" multiple>
+                                                <option value="1" disabled>选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <select class="form_select_multiple" multiple>
+                                                <option value="1" disabled>选项1</option>
+                                                <option value="2" >选项2</option>
+                                                <option value="3">选项3</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">隐藏全选按钮</label>
+                            </div>
+                            <div class="bms_col bms_col7">
+                                <select class="form_select_multiple" multiple data-selectall="true">
+                                        <option value="1" >选项1</option>
+                                        <option value="2" >选项2</option>
+                                        <option value="3">选项3</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <xmp>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">普通下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_single" multiple>
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_multiple" multiple>
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">能清除的下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_single" multiple data-showclear="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_multiple" multiple data-showclear="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">自定义占位符下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_single" multiple data-placeholder="我是单选框自定义提示！！！">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_multiple" multiple data-placeholder="我是多选框自定义提示！！！">
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">分组下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_single" multiple>
+                                                <optgroup label="分组1">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                                <optgroup label="分组2">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_multiple" multiple>
+                                                <optgroup label="分组1">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                                <optgroup label="分组2">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">带搜索的下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col10">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col4">
+                                            <select class="form_select_single" multiple data-filter="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2">选项2</option>
+                                                <option value="3">选项3</option>
+                                                <option value="4">选项4</option>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col4">
+                                            <select class="form_select_multiple" multiple data-filter="true">
+                                                <option value="1">选项1</option>
+                                                <option value="2">选项2</option>
+                                                <option value="3">选项3</option>
+                                                <option value="4">选项4</option>
+                                                <option value="5">选项5</option>
+                                                <option value="6">选项6</option>
+                                                <option value="7">选项7</option>
+                                                <option value="8">选项8</option>
+                                                <option value="9">选项9</option>
+                                                <option value="10">选项10</option>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col4">
+                                            <select class="form_select_multiple" multiple data-filter="true" data-filtergroup="true" data-placeholder="过滤分组！！！">
+                                                <optgroup label="分组1">
+                                                        <option value="1">选项1</option>
+                                                        <option value="2" >选项2</option>
+                                                    </optgroup>
+                                                    <optgroup label="分组2">
+                                                        <option value="1">选项1</option>
+                                                        <option value="2" >选项2</option>
+                                                    </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">禁用下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_single" multiple disabled>
+                                                <optgroup label="分组1">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                                <optgroup label="分组2">
+                                                    <option value="1">选项1</option>
+                                                    <option value="2" >选项2</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_multiple" multiple disabled>
+                                                <option value="1">选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">禁用选项下拉框</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <div class="bms_row bms_row_space5">
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_single" multiple>
+                                                <option value="1" disabled>选项1</option>
+                                                <option value="2" >选项2</option>
+                                            </select>
+                                        </div>
+                                        <div class="bms_col bms_col6">
+                                            <select class="form_select_multiple" multiple>
+                                                <option value="1" disabled>选项1</option>
+                                                <option value="2" >选项2</option>
+                                                <option value="3">选项3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bms_row bms_form_item bms_row_space20">
+                                <div class="bms_col bms_col2">
+                                    <label class="form_lable">隐藏全选按钮</label>
+                                </div>
+                                <div class="bms_col bms_col7">
+                                    <select class="form_select_multiple" multiple data-selectall="true">
+                                        <option value="1" >选项1</option>
+                                        <option value="2" >选项2</option>
+                                        <option value="3">选项3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </xmp>
                     </div>
-                    <div class="bms_col bms_col10">
-                        <div class="bms_row bms_row_space5">
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <fieldset>
+                            <legend>开关</legend>
+                        </fieldset>
+                        <div class="bms_row bms_form_item">
                             <div class="bms_col bms_col4">
-                                <select class="form_select_single" multiple data-filter="true">
-                                    <option value="1">选项1</option>
-                                    <option value="2">选项2</option>
-                                    <option value="3">选项3</option>
-                                    <option value="4">选项4</option>
-                                </select>
+                                <div class="bms_row bms_row_space20">
+                                    <div class="bms_col bms_col6">
+                                        <label class="form_lable">默认</label>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <div class="form_switch_wrap">
+                                            <input type="checkbox" id="default_switch1">
+                                            <label for="default_switch1" class="form_lable"></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bms_col bms_col4">
-                                <select class="form_select_multiple" multiple data-filter="true">
-                                    <option value="1">选项1</option>
-                                    <option value="2">选项2</option>
-                                    <option value="3">选项3</option>
-                                    <option value="4">选项4</option>
-                                    <option value="5">选项5</option>
-                                    <option value="6">选项6</option>
-                                    <option value="7">选项7</option>
-                                    <option value="8">选项8</option>
-                                    <option value="9">选项9</option>
-                                    <option value="10">选项10</option>
-                                </select>
-                            </div>
-                            <div class="bms_col bms_col4">
-                                <select class="form_select_multiple" multiple data-filter="true" data-filtergroup="true" data-placeholder="过滤分组！！！">
-                                    <optgroup label="分组1">
-                                            <option value="1">选项1</option>
-                                            <option value="2" >选项2</option>
-                                        </optgroup>
-                                        <optgroup label="分组2">
-                                            <option value="1">选项1</option>
-                                            <option value="2" >选项2</option>
-                                        </optgroup>
-                                </select>
+                                <div class="bms_row bms_row_space20">
+                                    <div class="bms_col bms_col6">
+                                        <label class="form_lable">禁用</label>
+                                    </div>
+                                    <div class="bms_col bms_col6">
+                                        <div class="form_switch_wrap">
+                                            <input type="checkbox" id="default_switch2" disabled>
+                                            <label for="default_switch2" class="form_lable"></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">禁用下拉框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_single" multiple disabled>
-                                    <optgroup label="分组1">
-                                        <option value="1">选项1</option>
-                                        <option value="2" >选项2</option>
-                                    </optgroup>
-                                    <optgroup label="分组2">
-                                        <option value="1">选项1</option>
-                                        <option value="2" >选项2</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_multiple" multiple disabled>
-                                    <option value="1">选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">禁用选项下拉框</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <div class="bms_row bms_row_space5">
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_single" multiple>
-                                    <option value="1" disabled>选项1</option>
-                                    <option value="2" >选项2</option>
-                                </select>
-                            </div>
-                            <div class="bms_col bms_col6">
-                                <select class="form_select_multiple" multiple>
-                                    <option value="1" disabled>选项1</option>
-                                    <option value="2" >选项2</option>
-                                    <option value="3">选项3</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bms_row bms_form_item bms_row_space20">
-                    <div class="bms_col bms_col2">
-                        <label class="form_lable">隐藏全选按钮</label>
-                    </div>
-                    <div class="bms_col bms_col7">
-                        <select class="form_select_multiple" multiple data-selectall="true">
-                            <option value="1" >选项1</option>
-                            <option value="2" >选项2</option>
-                            <option value="3">选项3</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="code_block">
-            <fieldset>
-                <legend>开关</legend>
-            </fieldset>
-            <form action="#">
-                <div class="bms_row bms_form_item">
-                    <div class="bms_col bms_col4">
-                        <div class="bms_row bms_row_space20">
-                            <div class="bms_col bms_col6">
-                                <label class="form_lable">默认</label>
-                            </div>
-                            <div class="bms_col bms_col6">
+                        <xmp>
+                            <div class="bms_row bms_form_item">
                                 <div class="form_switch_wrap">
-                                    <input type="checkbox" id="default_switch1">
+                                    <input type="checkbox" id="default_switch1" disabled>
                                     <label for="default_switch1" class="form_lable"></label>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="bms_col bms_col4">
-                        <div class="bms_row bms_row_space20">
-                            <div class="bms_col bms_col6">
-                                <label class="form_lable">禁用</label>
-                            </div>
-                            <div class="bms_col bms_col6">
-                                <div class="form_switch_wrap">
-                                    <input type="checkbox" id="default_switch2" disabled>
-                                    <label for="default_switch2" class="form_lable"></label>
-                                </div>
-                            </div>
-                        </div>
+                        </xmp>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </body>

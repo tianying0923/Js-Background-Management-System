@@ -247,6 +247,7 @@
     padding: 0 10px;
     box-sizing: border-box;
     background-color: #fff;
+    z-index: 1;
 }
 
 #bms_tabs .swiper-container {
@@ -292,7 +293,7 @@
     white-space: nowrap;
 }
 
-#bms_tabs .swiper-slide.swiper-slide-thumb-active::after {
+#bms_tabs .swiper-slide.tab_active::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -302,11 +303,11 @@
     background-color: #409eff;
 }
 
-#bms_tabs .swiper-slide.swiper-slide-thumb-active a {
+#bms_tabs .swiper-slide.tab_active a {
     color: #1890ff;
 }
 
-#bms_tabs .swiper-slide.swiper-slide-thumb-active i {
+#bms_tabs .swiper-slide.tab_active i {
     display: inline-block;
 }
 
