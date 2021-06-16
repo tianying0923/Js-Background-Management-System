@@ -98,6 +98,8 @@ sup.dot_num {
 
 /* ---------- 选项卡 ---------- */
 
+.tab_wrapper {}
+
 .tab_title_wrapper .swiper-wrapper {
     background-color: #F5F7FA;
     border-bottom: 1px solid #E4E7ED;
@@ -137,7 +139,6 @@ sup.dot_num {
     height: initial;
     padding: 15px;
     box-sizing: border-box;
-    width: 100%!important;
     overflow: auto;
 }
 

@@ -23,3 +23,5 @@
 4.日期插件
 - 使用版本：1.0.0
 - 网址：https://github.com/qiuyaofan/datepicker
+
+demo[https://tianying0923.github.io/Js-Background-Management-System/layout.html]

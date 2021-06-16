@@ -574,7 +574,9 @@ select:disabled,
 .bms_form_item.bms_form_item_lg .form_lable,
 .bms_form_item.bms_form_item_lg .form_input,
 .bms_form_item.bms_form_item_lg .ms-choice,
-.bms_form_item.bms_form_item_lg .form_tips {
+.bms_form_item.bms_form_item_lg .form_tips,
+.bms_form_item.bms_form_item_lg .datepicker_time,
+.bms_form_item.bms_form_item_lg .datepicker_time_range {
     height: 40px;
     line-height: 40px;
 }
@@ -582,7 +584,9 @@ select:disabled,
 .bms_form_item.bms_form_item_sm .form_lable,
 .bms_form_item.bms_form_item_sm .form_input,
 .bms_form_item.bms_form_item_sm .ms-choice,
-.bms_form_item.bms_form_item_sm .form_tips {
+.bms_form_item.bms_form_item_sm .form_tips,
+.bms_form_item.bms_form_item_sm .datepicker_time,
+.bms_form_item.bms_form_item_sm .datepicker_time_range {
     height: 32px;
     line-height: 32px;
 }
@@ -590,7 +594,9 @@ select:disabled,
 .bms_form_item.bms_form_item_xs .form_lable,
 .bms_form_item.bms_form_item_xs .form_input,
 .bms_form_item.bms_form_item_xs .ms-choice,
-.bms_form_item.bms_form_item_xs .form_tips {
+.bms_form_item.bms_form_item_xs .form_tips,
+.bms_form_item.bms_form_item_xs .datepicker_time,
+.bms_form_item.bms_form_item_xs .datepicker_time_range {
     height: 28px;
     line-height: 28px;
 }
@@ -602,4 +608,16 @@ select:disabled,
     color: #f00;
     margin-top: 3px;
     display: none;
+}
+
+
+/* ---------- 时间/日期选择器 ---------- */
+
+.kxiconfont~input {
+    border: none;
+}
+
+.datepicker_time_range input {
+    display: inline-block;
+    width: 45%;
 }

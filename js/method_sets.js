@@ -394,7 +394,6 @@
                             def = colAttrStr.match(/col\d+/);
                         let colVal = def; // 正则匹配获取子元素宽度
                         if (windowW < 1200) {
-                            console.log('1200')
                             colVal = md || lg || xl || def; // md
                         } else if (windowW < 1600) colVal = lg || xl || def; // lg
                         else if (windowW < 1600) colVal = xl || def; // xl 

@@ -1,0 +1,155 @@
+<body>
+    <style>
+        .c-datepicker-date-editor {
+            position: relative;
+            padding: 0 0 0 35px!important;
+            box-sizing: border-box;
+        }
+        
+        .c-datepicker-data-input {
+            text-align: left;
+            width: 100%;
+        }
+        
+        .kxiconfont {
+            position: absolute;
+            left: 10px;
+        }
+    </style>
+    <div class="wrap">
+
+        <div class="code_block">
+            <fieldset>
+                <legend>用法</legend>
+            </fieldset>
+            <xmp>
+                <button type="button" class="bms_btn">
+                    <span>default</span>
+                </button>
+            </xmp>
+        </div>
+    </div>
+    <div class="tab_wrapper">
+        <div class="swiper-container tab_title_wrapper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tab_item">
+                    例子
+                </div>
+                <div class="swiper-slide tab_item">
+                    边框按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    圆角按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    不同尺寸按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    块级按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    图标按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    禁用按钮
+                </div>
+                <div class="swiper-slide tab_item">
+                    按钮组
+                </div>
+            </div>
+        </div>
+        <div class="swiper-container tab_main_wrapper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">时间选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 bms_col_xl1 bms_col_lg2 bms_col_md3 c-datepicker-date-editor datepicker_time">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="选择时间" class="form_input" value="">
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">时间段选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 bms_col_xl1 bms_col_lg2 bms_col_md3 c-datepicker-date-editor datepicker_time_range">
+                                <!-- <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="选择时间" class="form_input" value=""> -->
+                                <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="开始时间" class="form_input" value="">
+
+                                <!-- <input placeholder="开始时间" name="" class="c-datepicker-data-input only-time" value=""> -->
+                                <span class="c-datepicker-range-separator">-</span>
+                                <input type="text" autocomplete="off" name="" placeholder="结束时间" class="form_input" value="">
+
+                                <!-- <input placeholder="结束时间" name="" class="c-datepicker-data-input only-time" value=""> -->
+                            </div>
+                        </div>
+                        <!-- <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">禁用输入框</label>
+                            </div>
+                            <div class="bms_col bms_col2 bms_col_xl1 bms_col_lg2 bms_col_md3 c-datepicker-date-editor J-datepicker-time">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="选择时间" class="c-datepicker-data-input" value="" data-mintime="">
+                            </div>
+                        </div> -->
+                        <!-- <div class="c-datepicker-date-editor J-datepicker-time">
+                            <i class="kxiconfont icon-clock"></i>
+                            <input type="text" autocomplete="off" name="" placeholder="选择时间" class="c-datepicker-data-input" value="">
+                        </div> -->
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        边框按钮
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        圆角按钮
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        不同尺寸按钮
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        块级按钮
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        图标按钮
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        禁用按钮
+                    </div>
+                </div>
+                <div class="swiper-slide tab_item">
+                    <div class="code_block">
+                        按钮组
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.datepicker_time').datePicker({
+            format: 'HH:mm:ss',
+        });
+        $('.datepicker_time_range').datePicker({
+            format: 'HH:mm:ss',
+            isRange: true,
+            min: '04:23:11',
+            max: '20:59:59'
+        });
+    </script>
+</body>
