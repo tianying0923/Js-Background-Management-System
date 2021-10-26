@@ -15,12 +15,18 @@
 </head>
 
 <body>
-    <select multiple="multiple">
-                <option value="1">January</option>
-                <option value="12">December</option>
-            </select>
+
     <script>
-        $('select').multipleSelect()
+        var a = {
+            a: 1,
+            b: 2
+        }
+        var b = {
+            a: 2,
+            b: 1
+        }
+        var opts = $.extend({}, a, b);
+        console.log(opts)
     </script>
 </body>
 

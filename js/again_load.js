@@ -4,19 +4,22 @@ $(function() {
         method: 'click'
     });
 
-    /**内容-选项卡*/
+    /**内容-选项卡-样式1 */
     $.bms_swiper_tab({
         tabTitleWrapper: '#bms_content .tab_title_wrapper',
         tabMainWrapper: '#bms_content .tab_main_wrapper',
     });
+
+    /**内容-选项卡-样式2 */
     $.bms_swiper_tab({
         tabTitleWrapper: '#bms_content .dropdown_wrapper .tab_title_wrapper',
         tabMainWrapper: '#bms_content .dropdown_wrapper .tab_main_wrapper'
     });
 
     /**栅格*/
-    $('body').BmsGrid();
-    var bmsSelect = $('body').BmsSelect();
+    $.bms_grid();
+
+    var bmsSelect = $.bms_select();
 
     /**表单-重置 */
     $('form input[type="reset"]').click(function() {

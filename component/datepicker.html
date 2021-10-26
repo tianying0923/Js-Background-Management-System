@@ -119,12 +119,7 @@
             format: 'HH:mm:ss',
         });
 
-        $('.datepicker_time_range').datePicker({
-            format: 'HH:mm:ss',
-            isRange: true,
-            // min: '04:23:11',
-            // max: '20:59:59'
-        });
+
 
         $('.datepicker_year').datePicker({
             format: 'YYYY',
@@ -132,12 +127,7 @@
             // max: '2020'
         });
 
-        $('.datepicker_year_range').datePicker({
-            format: 'YYYY',
-            isRange: false,
-            // min: '04:23:11',
-            // max: '20:59:59'
-        });
+
 
         // $('.J-yearPicker-single').datePicker({
         //     format: 'YYYY',
@@ -167,21 +157,8 @@
                 day: '-7'
             }]
         });
-        $('.datepicker_yearmonthday_range').datePicker({
-            hasShortcut: true,
-            format: 'YYYY-MM-DD',
-            isRange: true,
-            shortcutOptions: [{
-                name: '最近一周',
-                day: '-7,0'
-            }, {
-                name: '最近一个月',
-                day: '-30,0'
-            }, {
-                name: '最近三个月',
-                day: '-90, 0'
-            }]
-        });
+
+
 
         $('.datepicker_yearmonthdaytime').datePicker({
             hasShortcut: true,
@@ -201,6 +178,35 @@
             // hide: function() {
             //     console.info(this)
             // }
+        });
+
+
+        $('.datepicker_time_range').datePicker({
+            format: 'HH:mm:ss',
+            isRange: true,
+            // min: '04:23:11',
+            // max: '20:59:59'
+        });
+        $('.datepicker_year_range').datePicker({
+            format: 'YYYY',
+            isRange: false,
+            // min: '04:23:11',
+            // max: '20:59:59'
+        });
+        $('.datepicker_yearmonthday_range').datePicker({
+            hasShortcut: true,
+            format: 'YYYY-MM-DD',
+            isRange: true,
+            shortcutOptions: [{
+                name: '最近一周',
+                day: '-7,0'
+            }, {
+                name: '最近一个月',
+                day: '-30,0'
+            }, {
+                name: '最近三个月',
+                day: '-90, 0'
+            }]
         });
 
         $('.datepicker_yearmonthdaytime_range').datePicker({

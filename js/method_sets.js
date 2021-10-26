@@ -1,14 +1,15 @@
+/**需要挂在某一个元素上 */
 (function($) {
     'use strict';
     $.fn.extend({
         /**主体
-         * @param navClicked                    选填，导航选中class
-         * @param navDefaulIcon                 选填，导航默认右侧图标class
-         * @param navClickIcon                  选填，导航点击后右侧图标class
-         * @param navHDefaulIcon                选填，导航收起默认右侧图标class
-         * @param navHClickIcon                 选填，导航收起选中右侧图标class
-         * @param tabWrapper                 选填，点击右侧导航添加tab的父容名
-         * @param tabClicked                    选填，tabs选中class
+         * @param {String} [navClicked = 'nav_active']  选填，导航选中class
+         * @param {String} [navDefaulIcon = 'fa-angle-down']    选填，导航默认右侧图标class
+         * @param {String} [navClickIcon = 'fa-angle-up']   选填，导航点击后右侧图标class
+         * @param {String} [navHDefaulIcon = 'fa-angle-right' ] 选填，导航收起默认右侧图标class
+         * @param {String} [navHClickIcon = 'fa-angle-right'] 选填，导航收起选中右侧图标class
+         * @param {String} [tabWrapper = '.tabs_wrapper'] 选填，点击右侧导航添加tab的父容名
+         * @param {String} [tabClicked = 'tab_active'] 选填，tabs选中class
          */
         BmsLayout: function(options) {
             let navScroll, isHorizontal;
@@ -330,11 +331,15 @@
                 removeTabsOther: removeTabsOther,
             };
         },
-        /**下拉列表
-         * @param method                    选填，事件，默认移入
+        /** 
+         * 下拉列表
+         * @method BmsDropdown
+         * @param {String} [method = 'mouseleave'] 选填，事件
          */
         BmsDropdown: function(options) {
-            const defOpts = {},
+            const defOpts = {
+                    method: 'mouseleave',
+                },
                 opts = $.extend({}, defOpts, options),
                 that = this,
                 /**初始化 */
@@ -373,109 +378,14 @@
                 };
             init();
         },
-        /**栅格 */
-        BmsGrid: function() {
-            const init = function() {
-                for (const i of $('.bms_row')) { // 获取页面带有class=bms_row的元素，循环
-                    const rowAttrStr = $(i).attr('class');
-                    let colSpaceVal = rowAttrStr.match(/\d+/); // 正则匹配获取子元素左右边距
-                    if (colSpaceVal) {
-                        colSpaceVal = colSpaceVal[0].match(/^\d{1,2}/);
-                        $(i).children().css({
-                            'padding': '0 ' + colSpaceVal / 2 + 'px',
-                        });
-                    }
-                    for (const j of $(i).children()) { // 获取页面带有class=bms_row的子元素，循环
-                        // 先判断屏幕大小，然后再决定用哪个？
-                        const colAttrStr = $(j).attr('class'),
-                            md = colAttrStr.match(/md\d/),
-                            lg = colAttrStr.match(/lg\d/),
-                            xl = colAttrStr.match(/_xl\d/),
-                            def = colAttrStr.match(/col\d+/);
-                        let colVal = def; // 正则匹配获取子元素宽度
-                        if (windowW < 1200) {
-                            colVal = md || lg || xl || def; // md
-                        } else if (windowW < 1600) colVal = lg || xl || def; // lg
-                        else if (windowW < 1600) colVal = xl || def; // xl 
-                        if (colVal) {
-                            if (colVal[0].match(/\d{1,2}/) > 12) colVal = colVal[0].match(/^\d{1}/);
-                            else colVal = colVal[0].match(/\d{1,2}/);
-                        } else {
-                            if (!$(j).siblings().length) colVal = 12;
-                            else colVal = 1;
-                        }
-                        $(j).css({
-                            'flex': '0 0' + 100 / 12 * colVal + '%',
-                            'max-width': 100 / 12 * colVal + '%',
-                        });
-                    }
-                }
-            };
-            init();
-            return {};
-        },
-        /**下拉框-select */
-        BmsSelect: function(options) {
-            const defOpts = {
-                    placeholder: '请选择',
-                    showClear: false,
-                    filter: false,
-                    filterGroup: false,
-                    selectAll: false
-                },
-                opts = $.extend({}, defOpts, options),
-                single = $('.form_select_single'), // 单选
-                multiples = $('.form_select_multiple'), // 多选
-                init = function() {
-                    for (const i of single) {
-                        $(i).multipleSelect({
-                            single: true,
-                            width: '100%',
-                            showClear: $(i).data("showclear") || opts.showClear, // 清空按钮
-                            filter: $(i).data("filter") || opts.filter, // 搜索/过滤
-                            placeholder: $(i).data("placeholder") || opts.placeholder, // 提示/占位符
-                            formatNoMatchesFound: function() { // 格式化
-                                return '未找到匹配项'
-                            }
-                        });
-                    }
-                    for (const j of multiples) {
-                        $(j).multipleSelect({
-                            width: '100%',
-                            showClear: $(j).data("showclear") || opts.showClear, // 清空按钮
-                            filter: $(j).data("filter") || opts.filter, // 搜索/过滤
-                            filterGroup: $(j).data("filtergroup") || opts.filterGroup, // 搜索/过滤分组
-                            placeholder: $(j).data("placeholder") || opts.placeholder, // 提示/占位符
-                            selectAll: !$(j).data("selectall") || opts.selectAll, // 全选按钮
-                            ellipsis: true, // 超出宽度省略号
-                            minimumCountSelected: 1000, // 超出宽度省略号
-                            formatSelectAll: function() { // 格式化
-                                return '全选'
-                            },
-                            formatAllSelected: function() { // 格式化
-                                return '全选'
-                            },
-                            formatNoMatchesFound: function() { // 格式化
-                                return '未找到匹配项'
-                            },
-                        });
-                    }
-                },
-                uncheckAll = function() {
-                    single.multipleSelect('uncheckAll');
-                    multiples.multipleSelect('uncheckAll');
-                };
-            init();
-            return {
-                uncheckAll: uncheckAll
-            };
-        }
     });
 
 })($);
 
+/**不用挂，就是全局 */
 jQuery.extend({
-    /**tab选项卡切换
+    /** tab选项卡切换
+     * @method bms_swiper_tab
      * @param tabTitleWrapper 选项卡头
      * @param tabMainWrapper 选项卡内容
      */
@@ -531,4 +441,111 @@ jQuery.extend({
             };
         init();
     },
+    /** 
+     * 栅格
+     * @method bms_grid
+     */
+    bms_grid: function() {
+        const init = function() {
+            for (const i of $('.bms_row')) { // 获取页面带有class=bms_row的元素，循环
+                const rowAttrStr = $(i).attr('class');
+                let colSpaceVal = rowAttrStr.match(/\d+/); // 正则匹配获取子元素左右边距
+                if (colSpaceVal) {
+                    colSpaceVal = colSpaceVal[0].match(/^\d{1,2}/);
+                    $(i).children().css({
+                        'padding': '0 ' + colSpaceVal / 2 + 'px',
+                    });
+                }
+                for (const j of $(i).children()) { // 获取页面带有class=bms_row的子元素，循环
+                    // 先判断屏幕大小，然后再决定用哪个？
+                    const colAttrStr = $(j).attr('class'),
+                        md = colAttrStr.match(/md\d/),
+                        lg = colAttrStr.match(/lg\d/),
+                        xl = colAttrStr.match(/_xl\d/),
+                        def = colAttrStr.match(/col\d+/);
+                    let colVal = def; // 正则匹配获取子元素宽度
+                    if (windowW < 1200) {
+                        colVal = md || lg || xl || def; // md
+                    } else if (windowW < 1600) colVal = lg || xl || def; // lg
+                    else if (windowW < 1600) colVal = xl || def; // xl 
+                    if (colVal) {
+                        if (colVal[0].match(/\d{1,2}/) > 12) colVal = colVal[0].match(/^\d{1}/);
+                        else colVal = colVal[0].match(/\d{1,2}/);
+                    } else {
+                        if (!$(j).siblings().length) colVal = 12;
+                        else colVal = 1;
+                    }
+                    $(j).css({
+                        'flex': '0 0' + 100 / 12 * colVal + '%',
+                        'max-width': 100 / 12 * colVal + '%',
+                    });
+                }
+            }
+        };
+        init();
+    },
+    /**
+     * 下拉框-select 
+     * @method bms_select
+     * @param {String} [placeholder = '请选择'] 选填，默认提示
+     * @param {Boolean} [showClear = false] 选填，是否展示清空按钮
+     * @param {Boolean} [filter = false] 选填，是否允许搜索/过滤
+     * @param {Boolean} [filterGroup = false] 选填，是否允许搜索/过滤分组
+     * @param {Boolean} [selectAll = false] 选填，是否允许全选按钮；注：仅用于多选分组
+     * @return {Method = uncheckAll}  清空下拉框
+     */
+    bms_select: function() {
+        const defOpts = {
+                placeholder: '请选择',
+                showClear: false,
+                filter: false,
+                filterGroup: false,
+                selectAll: false
+            },
+            single = $('.form_select_single'), // 单选
+            multiples = $('.form_select_multiple'), // 多选
+            init = function() {
+                for (const i of single) {
+                    $(i).multipleSelect({
+                        single: true,
+                        width: '100%',
+                        showClear: $(i).data("showclear") || defOpts.showClear, // 清空按钮
+                        filter: $(i).data("filter") || defOpts.filter, // 搜索/过滤
+                        placeholder: $(i).data("placeholder") || defOpts.placeholder, // 提示/占位符
+                        formatNoMatchesFound: function() { // 格式化
+                            return '未找到匹配项'
+                        }
+                    });
+                }
+                for (const j of multiples) {
+                    $(j).multipleSelect({
+                        width: '100%',
+                        showClear: $(j).data("showclear") || defOpts.showClear, // 清空按钮
+                        filter: $(j).data("filter") || defOpts.filter, // 搜索/过滤
+                        filterGroup: $(j).data("filtergroup") || defOpts.filterGroup, // 搜索/过滤分组
+                        placeholder: $(j).data("placeholder") || defOpts.placeholder, // 提示/占位符
+                        selectAll: !$(j).data("selectall") || defOpts.selectAll, // 全选按钮
+                        ellipsis: true, // 超出宽度省略号
+                        minimumCountSelected: 1000, // 超出宽度省略号
+                        formatSelectAll: function() { // 格式化
+                            return '全选'
+                        },
+                        formatAllSelected: function() { // 格式化
+                            return '全选'
+                        },
+                        formatNoMatchesFound: function() { // 格式化
+                            return '未找到匹配项'
+                        },
+                    });
+                }
+            },
+            uncheckAll = function() {
+                single.multipleSelect('uncheckAll');
+                multiples.multipleSelect('uncheckAll');
+            };
+        init();
+        return {
+            uncheckAll: uncheckAll
+        };
+    }
 });
