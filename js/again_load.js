@@ -23,6 +23,7 @@ $(function() {
         $(this).parents('form').find('.required_info').removeClass('show');
         bmsSelect.uncheckAll();
     });
+
     /**表单-提交 */
     $('form input[type="submit"]').click(function() {
         var formChildren = $(this).parents('form').children();

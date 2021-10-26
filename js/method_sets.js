@@ -513,7 +513,6 @@ jQuery.extend({
                     slidesPerView: 'auto',
                     allowSlideNext: false, // 禁止向右或下滑动
                     allowSlidePrev: false, // 禁止向左或上滑动
-                    // simulateTouch: false, // 鼠标拖动无效
                 });
                 tabMain = new Swiper(opts.tabMainWrapper, {
                     autoHeight: true, // 自动高度

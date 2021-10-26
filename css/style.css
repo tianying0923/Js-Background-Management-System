@@ -173,6 +173,7 @@ sup.dot_num {
     white-space: normal;
     box-sizing: border-box;
     /* position: relative; */
+    padding: 0;
 }
 
 .bms_col div {

@@ -575,8 +575,8 @@ select:disabled,
 .bms_form_item.bms_form_item_lg .form_input,
 .bms_form_item.bms_form_item_lg .ms-choice,
 .bms_form_item.bms_form_item_lg .form_tips,
-.bms_form_item.bms_form_item_lg .datepicker_time,
-.bms_form_item.bms_form_item_lg .datepicker_time_range {
+.bms_form_item.bms_form_item_lg .datepicker,
+.bms_form_item.bms_form_item_lg .datepicker_range {
     height: 40px;
     line-height: 40px;
 }
@@ -585,8 +585,8 @@ select:disabled,
 .bms_form_item.bms_form_item_sm .form_input,
 .bms_form_item.bms_form_item_sm .ms-choice,
 .bms_form_item.bms_form_item_sm .form_tips,
-.bms_form_item.bms_form_item_sm .datepicker_time,
-.bms_form_item.bms_form_item_sm .datepicker_time_range {
+.bms_form_item.bms_form_item_sm .datepicker,
+.bms_form_item.bms_form_item_sm .datepicker_range {
     height: 32px;
     line-height: 32px;
 }
@@ -595,8 +595,8 @@ select:disabled,
 .bms_form_item.bms_form_item_xs .form_input,
 .bms_form_item.bms_form_item_xs .ms-choice,
 .bms_form_item.bms_form_item_xs .form_tips,
-.bms_form_item.bms_form_item_xs .datepicker_time,
-.bms_form_item.bms_form_item_xs .datepicker_time_range {
+.bms_form_item.bms_form_item_xs .datepicker,
+.bms_form_item.bms_form_item_xs .datepicker_range {
     height: 28px;
     line-height: 28px;
 }
@@ -617,7 +617,35 @@ select:disabled,
     border: none;
 }
 
-.datepicker_time_range input {
+.datepicker_range input {
     display: inline-block;
-    width: 45%;
+    width: 48.5%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.datepicker input {
+    padding: 0 20px;
+}
+
+.c-datepicker-date-editor {
+    position: relative;
+    box-sizing: border-box;
+    min-width: 245px;
+}
+
+.c-datepicker-data-input {
+    text-align: left;
+    width: 100%;
+}
+
+.kxiconfont.icon-clock {
+    position: absolute;
+    left: 10px;
+}
+
+.c-datepicker-range-separator {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }

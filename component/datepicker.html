@@ -1,23 +1,5 @@
 <body>
-    <style>
-        .c-datepicker-date-editor {
-            position: relative;
-            padding: 0 0 0 35px!important;
-            box-sizing: border-box;
-        }
-        
-        .c-datepicker-data-input {
-            text-align: left;
-            width: 100%;
-        }
-        
-        .kxiconfont {
-            position: absolute;
-            left: 10px;
-        }
-    </style>
     <div class="wrap">
-
         <div class="code_block">
             <fieldset>
                 <legend>用法</legend>
@@ -33,28 +15,10 @@
         <div class="swiper-container tab_title_wrapper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide tab_item">
-                    例子
+                    普通时间选择器
                 </div>
                 <div class="swiper-slide tab_item">
-                    边框按钮
-                </div>
-                <div class="swiper-slide tab_item">
-                    圆角按钮
-                </div>
-                <div class="swiper-slide tab_item">
-                    不同尺寸按钮
-                </div>
-                <div class="swiper-slide tab_item">
-                    块级按钮
-                </div>
-                <div class="swiper-slide tab_item">
-                    图标按钮
-                </div>
-                <div class="swiper-slide tab_item">
-                    禁用按钮
-                </div>
-                <div class="swiper-slide tab_item">
-                    按钮组
+                    范围时间选择器
                 </div>
             </div>
         </div>
@@ -62,80 +26,89 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide tab_item">
                     <div class="code_block">
-                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                        <div class="bms_row bms_form_item bms_row_space20">
                             <div class="bms_col bms_col2">
                                 <label class="form_lable">时间选择框</label>
                             </div>
-                            <div class="bms_col bms_col2 bms_col_xl1 bms_col_lg2 bms_col_md3 c-datepicker-date-editor datepicker_time">
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker datepicker_time">
                                 <i class="kxiconfont icon-clock"></i>
                                 <input type="text" autocomplete="off" name="" placeholder="选择时间" class="form_input" value="">
                             </div>
                         </div>
-                        <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                        <div class="bms_row bms_form_item bms_row_space20">
                             <div class="bms_col bms_col2">
-                                <label class="form_lable">时间段选择框</label>
+                                <label class="form_lable">年选择框</label>
                             </div>
-                            <div class="bms_col bms_col2 bms_col_xl1 bms_col_lg2 bms_col_md3 c-datepicker-date-editor datepicker_time_range">
-                                <!-- <i class="kxiconfont icon-clock"></i>
-                                <input type="text" autocomplete="off" name="" placeholder="选择时间" class="form_input" value=""> -->
-                                <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-                                <input type="text" autocomplete="off" name="" placeholder="开始时间" class="form_input" value="">
-
-                                <!-- <input placeholder="开始时间" name="" class="c-datepicker-data-input only-time" value=""> -->
-                                <span class="c-datepicker-range-separator">-</span>
-                                <input type="text" autocomplete="off" name="" placeholder="结束时间" class="form_input" value="">
-
-                                <!-- <input placeholder="结束时间" name="" class="c-datepicker-data-input only-time" value=""> -->
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker datepicker_year">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="选择年份" class="form_input" value="">
                             </div>
                         </div>
-                        <!-- <div class="bms_row bms_form_item bms_row_space20 bms_form_item_lg">
+                        <div class="bms_row bms_form_item bms_row_space20">
                             <div class="bms_col bms_col2">
-                                <label class="form_lable">禁用输入框</label>
+                                <label class="form_lable">年月选择框</label>
                             </div>
-                            <div class="bms_col bms_col2 bms_col_xl1 bms_col_lg2 bms_col_md3 c-datepicker-date-editor J-datepicker-time">
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker datepicker_yearmonth">
                                 <i class="kxiconfont icon-clock"></i>
-                                <input type="text" autocomplete="off" name="" placeholder="选择时间" class="c-datepicker-data-input" value="" data-mintime="">
+                                <input type="text" autocomplete="off" name="" placeholder="选择年月" class="form_input" value="">
                             </div>
-                        </div> -->
-                        <!-- <div class="c-datepicker-date-editor J-datepicker-time">
-                            <i class="kxiconfont icon-clock"></i>
-                            <input type="text" autocomplete="off" name="" placeholder="选择时间" class="c-datepicker-data-input" value="">
-                        </div> -->
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">年月日选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker datepicker_yearmonthday">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="选择日期" class="form_input" value="">
+                            </div>
+                        </div>
+
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">年月日时间选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker datepicker_yearmonthdaytime">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="选择日期" class="form_input" value="">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide tab_item">
                     <div class="code_block">
-                        边框按钮
-                    </div>
-                </div>
-                <div class="swiper-slide tab_item">
-                    <div class="code_block">
-                        圆角按钮
-                    </div>
-                </div>
-                <div class="swiper-slide tab_item">
-                    <div class="code_block">
-                        不同尺寸按钮
-                    </div>
-                </div>
-                <div class="swiper-slide tab_item">
-                    <div class="code_block">
-                        块级按钮
-                    </div>
-                </div>
-                <div class="swiper-slide tab_item">
-                    <div class="code_block">
-                        图标按钮
-                    </div>
-                </div>
-                <div class="swiper-slide tab_item">
-                    <div class="code_block">
-                        禁用按钮
-                    </div>
-                </div>
-                <div class="swiper-slide tab_item">
-                    <div class="code_block">
-                        按钮组
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">时间范围选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker_range datepicker_time_range">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="开始时间" class="form_input" value="">
+                                <span class="c-datepicker-range-separator">-</span>
+                                <input type="text" autocomplete="off" name="" placeholder="结束时间" class="form_input" value="">
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">年月日范围选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker_range datepicker_yearmonthday_range">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="开始时间" class="form_input" value="">
+                                <span class="c-datepicker-range-separator">-</span>
+                                <input type="text" autocomplete="off" name="" placeholder="结束时间" class="form_input" value="">
+                            </div>
+                        </div>
+                        <div class="bms_row bms_form_item bms_row_space20">
+                            <div class="bms_col bms_col2">
+                                <label class="form_lable">年月日时间范围选择框</label>
+                            </div>
+                            <div class="bms_col bms_col2 c-datepicker-date-editor datepicker_range datepicker_yearmonthdaytime_range">
+                                <i class="kxiconfont icon-clock"></i>
+                                <input type="text" autocomplete="off" name="" placeholder="开始时间" class="form_input" value="">
+                                <span class="c-datepicker-range-separator">-</span>
+                                <input type="text" autocomplete="off" name="" placeholder="结束时间" class="form_input" value="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,11 +118,94 @@
         $('.datepicker_time').datePicker({
             format: 'HH:mm:ss',
         });
+
         $('.datepicker_time_range').datePicker({
             format: 'HH:mm:ss',
             isRange: true,
-            min: '04:23:11',
-            max: '20:59:59'
+            // min: '04:23:11',
+            // max: '20:59:59'
+        });
+
+        $('.datepicker_year').datePicker({
+            format: 'YYYY',
+            // min: '2018',
+            // max: '2020'
+        });
+
+        $('.datepicker_year_range').datePicker({
+            format: 'YYYY',
+            isRange: false,
+            // min: '04:23:11',
+            // max: '20:59:59'
+        });
+
+        // $('.J-yearPicker-single').datePicker({
+        //     format: 'YYYY',
+        //     min: '2018',
+        //     max: '2020'
+        // });
+        //年月单个
+        $('.datepicker_yearmonth').datePicker({
+            format: 'YYYY-MM',
+            // min: '2018-01',
+            // max: '2019-04',
+            // hide: function (type) {
+            //   console.info(this.$input.eq(0).val());
+            // }
+        });
+        $('.datepicker_yearmonthday').datePicker({
+            hasShortcut: true,
+            format: 'YYYY-MM-DD',
+            shortcutOptions: [{
+                name: '今天',
+                day: '0'
+            }, {
+                name: '昨天',
+                day: '-1'
+            }, {
+                name: '一周前',
+                day: '-7'
+            }]
+        });
+        $('.datepicker_yearmonthday_range').datePicker({
+            hasShortcut: true,
+            format: 'YYYY-MM-DD',
+            isRange: true,
+            shortcutOptions: [{
+                name: '最近一周',
+                day: '-7,0'
+            }, {
+                name: '最近一个月',
+                day: '-30,0'
+            }, {
+                name: '最近三个月',
+                day: '-90, 0'
+            }]
+        });
+
+        $('.datepicker_yearmonthdaytime').datePicker({
+            hasShortcut: true,
+            // min: '2018-01-01 04:00:00',
+            // max: '2019-04-29 20:59:59',
+            shortcutOptions: [{
+                name: '今天',
+                day: '0'
+            }, {
+                name: '昨天',
+                day: '-1',
+                time: '00:00:00'
+            }, {
+                name: '一周前',
+                day: '-7'
+            }],
+            // hide: function() {
+            //     console.info(this)
+            // }
+        });
+
+        $('.datepicker_yearmonthdaytime_range').datePicker({
+            isRange: true,
+            // between: 30 // 只能选三十天以内
         });
     </script>
 </body>
