@@ -354,9 +354,10 @@
     <script src="./js/datepicker/moment.min.js"></script>
     <script src="./js/datepicker/datepicker.all.js"></script>
     <script>
-        /** ---------- 全局变量S ---------- */
+        /** ---------- S-全局变量 ---------- */
         const windowH = $(window).height() || 0,
             windowW = $(window).width() || 0,
+            windowUrl = window.location.hash,
             headerH = $('#bms_header').height() || 0,
             headerW = $('#bms_header').width() || 0,
             navWrapH = $('#bms_nav').height() || 0,
@@ -368,10 +369,13 @@
             footerH = $('#bms_footer').height() || 0,
             footerW = $('#bms_footer').width() || 0;
 
-        /**侧边导航插件*/
-        var layout = $('#bms_nav .nav_wraper').BmsLayout();
+        /** ---------- E-全局变量 ---------- */
 
-        /**顶部导航*/
+        /** ---------- S-侧边导航插件 ---------- */
+        var layout = $('#bms_nav .nav_wraper').BmsLayout();
+        /** ---------- E-侧边导航插件 ---------- */
+
+        /** ---------- S-顶部导航 ---------- */
         var tabsWrapper = new Swiper('#bms_tabs .swiper-container', {
             scrollbar: { // 滚动条
                 el: '.swiper-scrollbar',
@@ -383,7 +387,11 @@
         });
         tabsWrapper.scrollbar.$el.css('height', '3px'); // 设置滚动条宽度
         tabsWrapper.scrollbar.$dragEl.css('background', 'rgba(0,0,0,0.3)'); // 设置滚动条颜色
-        /** ---------- 全局变量E ---------- */
+        /** ---------- E-顶部导航 ---------- */
+
+        /** ---------- S-默认导航跳转 ---------- */
+        layout.baseUrlLoadPage(windowUrl);
+        /** ---------- E-默认导航跳转 ---------- */
     </script>
 
 </body>

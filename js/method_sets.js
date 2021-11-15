@@ -3,6 +3,7 @@
     'use strict';
     $.fn.extend({
         /**主体
+         * @method BmsLayout
          * @param {String} [navClicked = 'nav_active']  选填，导航选中class
          * @param {String} [navDefaulIcon = 'fa-angle-down']    选填，导航默认右侧图标class
          * @param {String} [navClickIcon = 'fa-angle-up']   选填，导航点击后右侧图标class
@@ -22,12 +23,14 @@
                     navHDefaulIcon: 'fa-angle-right',
                     navHClickIcon: 'fa-angle-left',
                     tabWrapper: '.tabs_wrapper',
-                    tabClicked: 'tab_active'
+                    tabClicked: 'tab_active',
+                    navItems: $(this).find('.nav_item')
                 },
                 opts = $.extend({}, defOpts, options),
                 that = this,
                 /**初始化 */
                 init = function() {
+                    console.log(opts.aaa)
                     $(that).children().find('.nav_sub_wrapper').show(); // 如不加此行代码会导致收起错位
                     initEle();
                     initVariable();
@@ -61,13 +64,13 @@
                 },
                 /**初始化默认样式 */
                 initDefaulStyle = function() {
-                    $(that).find('.nav_item').removeClass(opts.navClicked); // 清除所有li选中样式
+                    opts.navItems.removeClass(opts.navClicked); // 清除所有li选中样式
                     $(that).find('.nav_sub_wrapper').hide(); // 所有ul隐藏
                     const _html = formatAHtml($(opts.tabWrapper).children('.' + opts.tabClicked).children('a')); // 格式化a标签
                     if (isHorizontal) {
                         $('.header_logo').css('width', '60px');
                         $('.logo_hide').show().siblings().hide();
-                        for (const i of $(that).find('.nav_item')) {
+                        for (const i of opts.navItems) {
                             if ($(i).children('div').find('span').eq(0).html() === _html.eleTitle) {
                                 navItemClickFun($(i));
                                 break;
@@ -108,12 +111,12 @@
                 },
                 /**初始化事件 */
                 initFunction = function() {
-                    $(that).find('.nav_item').off(); // 清除所有绑定事件
-                    $(that).find('.nav_item').on({
+                    opts.navItems.off(); // 清除所有绑定事件
+                    opts.navItems.on({
                         'click': navItemClick
                     });
                     if (isHorizontal) { // 侧边导航绑定事件
-                        $(that).find('.nav_item').on({
+                        opts.navItems.on({
                             'mouseenter ': navItemMouseenter,
                             'mouseleave': navItemMouseleave,
                         });
@@ -153,7 +156,7 @@
                         // 子导航不存在 
                         else navItemClickFun($(this));
                     } else {
-                        $(that).find('.nav_item').removeClass(opts.navClicked); // 清除所有li元素的选中样式
+                        opts.navItems.removeClass(opts.navClicked); // 清除所有li元素的选中样式
                         $(this).siblings().find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon); // 切换箭头class
                         $(this).siblings().find('.nav_sub_wrapper').slideUp(opts.openingSpeed, function() { // 所有兄弟元素的ul隐藏
                             navScroll.update(); // 刷新导航滚动条
@@ -185,20 +188,21 @@
                         eleAHref = $(eleA).attr('href');
                     if (eleAHref == '#') layer.msg('顶部导航不支持href="#"的操作！！！</br>请检查代码！！！');
                     else {
+                        console.log(isHorizontal)
                         if (isHorizontal) {
                             // 给当前点击元素增加背景色
                             if ($(ele).parents('.nav_item').length) $(ele).parents('.nav_item').addClass(opts.navClicked).siblings().removeClass(opts.navClicked);
                             // 给当前点击元素增加背景色
                             else $(ele).addClass(opts.navClicked).siblings().removeClass(opts.navClicked);
                         } else $(ele).addClass(opts.navClicked); // 给当前点击元素增加背景色
-                        loadPage($(eleA));
+                        baseEleLoadPage($(eleA));
                         addTabs(eleSpanHtml, eleAHref);
                     }
                 },
                 /**加载页面
                  * @param ele 点击元素的a标签
                  */
-                loadPage = function(ele) {
+                baseEleLoadPage = function(ele) {
                     const url = $(ele).attr('href'),
                         start = url.indexOf('#') + 1,
                         end = url.indexOf('?'),
@@ -260,13 +264,13 @@
                  * @param ele
                  */
                 tabItemClick = function(ele) {
-                    $(that).find('.nav_item').removeClass(opts.navClicked).find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon);
+                    opts.navItems.removeClass(opts.navClicked).find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon);
                     $(that).find('ul').hide();
                     $(ele).addClass(opts.tabClicked).siblings().removeClass(opts.tabClicked); // 顶部tab
                     window.tabsWrapper.slideTo($(ele).index(), 1000, false); // 切换到某个slide，速度为1秒
                     // 顶部导航没有hred属性不允许跳转-S
                     if ($(ele).children('a').attr('href') == '#') layer.msg('顶部导航不支持href="#"的操作！！！</br>请检查代码！！！');
-                    else loadPage($(ele).find('a'));
+                    else baseEleLoadPage($(ele).find('a'));
                     // 顶部导航没有hred属性不允许跳转-E
                     const _html = formatAHtml($(ele).find('a')); // 格式化a标签
                     sideNavStyle($(that), _html.eleTitle);
@@ -319,7 +323,17 @@
                         window.tabsWrapper.removeSlide(i);
                         i--;
                     }
-                };
+                },
+                baseUrlLoadPage = function(url) {
+                    var navItem = opts.navItems;
+                    for (var i of navItem) {
+                        if ($(i).children('div').children('a').attr('href') == url) {
+                            navItemClickFun($(i));
+                            break;
+                        }
+                    }
+                    initDefaulStyle();
+                }
             initPlugIn();
             init();
             return {
@@ -329,6 +343,7 @@
                 removeTabs: removeTabs,
                 removeTabsAll: removeTabsAll,
                 removeTabsOther: removeTabsOther,
+                baseUrlLoadPage: baseUrlLoadPage
             };
         },
         /** 

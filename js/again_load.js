@@ -1,3 +1,4 @@
+/** 需要再次加载的js */
 $(function() {
     /**内容-全局下拉列表 */
     $('#bms_content .dropdown_wrapper').BmsDropdown({
