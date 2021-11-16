@@ -13,7 +13,7 @@
          * @param {String} [tabClicked = 'tab_active'] 选填，tabs选中class
          */
         BmsLayout: function(options) {
-            let navScroll, isHorizontal;
+            let navScroll, tabsWrapper, isHorizontal;
             const defOpts = {
                     openingSpeed: 400, // 打开菜单动画时间
                     closingSpeed: 400, // 关闭菜单动画时间
@@ -30,16 +30,18 @@
                 that = this,
                 /**初始化 */
                 init = function() {
-                    console.log(opts.aaa)
                     $(that).children().find('.nav_sub_wrapper').show(); // 如不加此行代码会导致收起错位
-                    initEle();
                     initVariable();
                     initDynamicStyle($(that), 0);
                     initDefaulStyle();
                     initFunction();
                 },
-                /**初始化页面元素距左侧距离 */
-                initEle = function() {
+                /**初始化变量 */
+                initVariable = function() {
+                    isHorizontal = $(that).parents().hasClass('horizontal');
+                },
+                /**初始化默认样式 */
+                initDefaulStyle = function() {
                     window.navWrapW = $('#bms_nav').width();
                     $('#bms_nav').css({
                         'padding': headerH + 'px 0 0 0'
@@ -57,13 +59,6 @@
                     $('#bms_header .dropdown_hide').css({
                         'top': headerH - 10
                     });
-                },
-                /**初始化变量 */
-                initVariable = function() {
-                    isHorizontal = $(that).parents().hasClass('horizontal');
-                },
-                /**初始化默认样式 */
-                initDefaulStyle = function() {
                     opts.navItems.removeClass(opts.navClicked); // 清除所有li选中样式
                     $(that).find('.nav_sub_wrapper').hide(); // 所有ul隐藏
                     const _html = formatAHtml($(opts.tabWrapper).children('.' + opts.tabClicked).children('a')); // 格式化a标签
@@ -79,9 +74,7 @@
                     } else {
                         $('.header_logo').css('width', '224px');
                         $('.logo_hide').hide().siblings().show();
-                        if ($(opts.tabWrapper).children().length > 1) {
-                            sideNavStyle($(that), _html.eleTitle);
-                        }
+                        if ($(opts.tabWrapper).children().length > 1) sideNavStyle($(that), _html.eleTitle);
                     }
                 },
                 /**初始化动态样式
@@ -136,6 +129,17 @@
                     });
                     navScroll.scrollbar.$el.css('width', '3px'); // 设置滚动条宽度
                     navScroll.scrollbar.$dragEl.css('background', 'rgba(0,0,0,0.3)'); // 设置滚动条颜色
+                    tabsWrapper = new Swiper('#bms_tabs .swiper-container', {
+                        scrollbar: { // 滚动条
+                            el: '.swiper-scrollbar',
+                            hide: true,
+                        },
+                        grabCursor: true, // 鼠标抓手形状
+                        slidesPerView: 'auto',
+                        spaceBetween: 30, //  左右距离
+                    });
+                    tabsWrapper.scrollbar.$el.css('height', '3px'); // 设置滚动条宽度
+                    tabsWrapper.scrollbar.$dragEl.css('background', 'rgba(0,0,0,0.3)'); // 设置滚动条颜色
                 },
                 /**侧边导航：鼠标悬浮事件 */
                 navItemMouseenter = function() {
@@ -188,7 +192,7 @@
                         eleAHref = $(eleA).attr('href');
                     if (eleAHref == '#') layer.msg('顶部导航不支持href="#"的操作！！！</br>请检查代码！！！');
                     else {
-                        console.log(isHorizontal)
+
                         if (isHorizontal) {
                             // 给当前点击元素增加背景色
                             if ($(ele).parents('.nav_item').length) $(ele).parents('.nav_item').addClass(opts.navClicked).siblings().removeClass(opts.navClicked);
@@ -199,7 +203,7 @@
                         addTabs(eleSpanHtml, eleAHref);
                     }
                 },
-                /**加载页面
+                /**通过元素加载页面
                  * @param ele 点击元素的a标签
                  */
                 baseEleLoadPage = function(ele) {
@@ -210,6 +214,23 @@
                     $('#bms_content').load((_html.indexOf('/') >= 0 ? '.' : '') + _html + '.html');
                     // 需要重新加载的js
                     $.getScript('./js/again_load.js');
+                },
+                /**通过url加载页面 */
+                initLoadPage = function() {
+                    var url = window.location.hash,
+                        ele;
+                    if (url) {
+                        for (var i of opts.navItems) {
+                            if ($(i).children('div').children('a').attr('href') == url) {
+                                ele = $(i)
+                                navItemClickFun(ele);
+                                break;
+                            }
+                        }
+                        if (!ele) tabItemClick($(opts.tabWrapper).children('.' + opts.tabClicked));
+                    } else {
+                        tabItemClick($(opts.tabWrapper).children('.' + opts.tabClicked));
+                    }
                 },
                 /**顶部导航：添加
                  * @param eleHtml 选中元素的html
@@ -234,7 +255,7 @@
                     $(opts.tabWrapper).children().removeClass(opts.tabClicked);
                     if (isAdd) {
                         const newSlide = '<li class="swiper-slide ' + opts.tabClicked + '"><a href="' + eleHref + '">' + eleHtml + ' ' + _id + '</a><i class="icon fa fa-times" aria-hidden="true"></i></li>';
-                        window.tabsWrapper.appendSlide(newSlide);
+                        tabsWrapper.appendSlide(newSlide);
                         addTabEleChild = $(opts.tabWrapper).children();
                         addEleChildLen = addTabEleChild.length;
                     }
@@ -243,7 +264,7 @@
                         if (tabEleChildOpts.eleTitle == eleHtml && tabEleChildOpts.eleId === _id) {
                             $(addTabEleChild[i]).children('a').attr('href', eleHref); // 当前顶部tab的href=传入的href；
                             $(addTabEleChild[i]).addClass(opts.tabClicked);
-                            window.tabsWrapper.slideTo(i, 1000, false); // 切换到某个slide，速度为1秒
+                            tabsWrapper.slideTo(i, 1000, false); // 切换到某个slide，速度为1秒
                             return addTabEleChild[i];
                         }
                     }
@@ -264,10 +285,11 @@
                  * @param ele
                  */
                 tabItemClick = function(ele) {
+                    console.log(ele)
                     opts.navItems.removeClass(opts.navClicked).find('span.icon').removeClass(opts.navClickIcon).addClass(opts.navDefaulIcon);
                     $(that).find('ul').hide();
                     $(ele).addClass(opts.tabClicked).siblings().removeClass(opts.tabClicked); // 顶部tab
-                    window.tabsWrapper.slideTo($(ele).index(), 1000, false); // 切换到某个slide，速度为1秒
+                    tabsWrapper.slideTo($(ele).index(), 1000, false); // 切换到某个slide，速度为1秒
                     // 顶部导航没有hred属性不允许跳转-S
                     if ($(ele).children('a').attr('href') == '#') layer.msg('顶部导航不支持href="#"的操作！！！</br>请检查代码！！！');
                     else baseEleLoadPage($(ele).find('a'));
@@ -304,14 +326,14 @@
                     // 判断关闭的是否是默认的-S
                     if ($(ele).parent().hasClass(opts.tabClicked))
                         tabItemClick($(ele).parent().prev());
-                    window.tabsWrapper.removeSlide($(ele).parent().index());
+                    tabsWrapper.removeSlide($(ele).parent().index());
                     // 判断关闭的是否是默认的-E
                 },
                 /**顶部导航：关闭全部 */
                 removeTabsAll = function() {
                     tabItemClick($(opts.tabWrapper).children().eq(0));
                     for (let i = 1; i < $(opts.tabWrapper).children().length; i++) {
-                        window.tabsWrapper.removeSlide(i);
+                        tabsWrapper.removeSlide(i);
                         i--;
                     }
                 },
@@ -320,30 +342,22 @@
                     for (let i = 1; i < $(opts.tabWrapper).children().length; i++) {
                         if ($(opts.tabWrapper).children().eq(i).hasClass(opts.tabClicked))
                             continue;
-                        window.tabsWrapper.removeSlide(i);
+                        tabsWrapper.removeSlide(i);
                         i--;
                     }
-                },
-                baseUrlLoadPage = function(url) {
-                    var navItem = opts.navItems;
-                    for (var i of navItem) {
-                        if ($(i).children('div').children('a').attr('href') == url) {
-                            navItemClickFun($(i));
-                            break;
-                        }
-                    }
-                    initDefaulStyle();
-                }
+                };
             initPlugIn();
+            initLoadPage();
             init();
             return {
                 init: init,
+                tabsWrapper: tabsWrapper,
                 addTabs: addTabs,
                 tabItemClick: tabItemClick,
                 removeTabs: removeTabs,
                 removeTabsAll: removeTabsAll,
                 removeTabsOther: removeTabsOther,
-                baseUrlLoadPage: baseUrlLoadPage
+                initDefaulStyle: initDefaulStyle,
             };
         },
         /** 

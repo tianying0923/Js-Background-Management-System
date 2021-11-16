@@ -128,7 +128,7 @@
                     <ul class="swiper-slide nav_wraper">
                         <li class="nav_item">
                             <div>
-                                <a href="#muban">
+                                <a href="#/muban">
                                     <i class="icon fa fa-check-square-o"></i>
                                     <span>模板</span>
                                 </a>
@@ -327,7 +327,8 @@
             <div class="swiper-container">
                 <ul class="swiper-wrapper tabs_wrapper">
                     <li class="swiper-slide tab_active">
-                        <a href="#">首页</a>
+                        <a href="#/content">首页</a>
+                        <!-- <a href="#/component/datepicker">首页</a> -->
                     </li>
                 </ul>
                 <div class="swiper-scrollbar"></div>
@@ -347,9 +348,9 @@
         </div>
     </section>
     <!-- 底部代码不需要可以删除 -->
-    <!-- <footer id="bms_footer">
+    <footer id="bms_footer">
         <p class="copyright"> Copyright © 2021 之马工厂</p>
-    </footer> -->
+    </footer>
     <!-- 日期时间框 -->
     <script src="./js/datepicker/moment.min.js"></script>
     <script src="./js/datepicker/datepicker.all.js"></script>
@@ -374,24 +375,6 @@
         /** ---------- S-侧边导航插件 ---------- */
         var layout = $('#bms_nav .nav_wraper').BmsLayout();
         /** ---------- E-侧边导航插件 ---------- */
-
-        /** ---------- S-顶部导航 ---------- */
-        var tabsWrapper = new Swiper('#bms_tabs .swiper-container', {
-            scrollbar: { // 滚动条
-                el: '.swiper-scrollbar',
-                hide: true,
-            },
-            grabCursor: true, // 鼠标抓手形状
-            slidesPerView: 'auto',
-            spaceBetween: 30, //  左右距离
-        });
-        tabsWrapper.scrollbar.$el.css('height', '3px'); // 设置滚动条宽度
-        tabsWrapper.scrollbar.$dragEl.css('background', 'rgba(0,0,0,0.3)'); // 设置滚动条颜色
-        /** ---------- E-顶部导航 ---------- */
-
-        /** ---------- S-默认导航跳转 ---------- */
-        layout.baseUrlLoadPage(windowUrl);
-        /** ---------- E-默认导航跳转 ---------- */
     </script>
 
 </body>

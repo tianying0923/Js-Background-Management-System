@@ -13,7 +13,7 @@ $(function() {
         $('#bms_nav').toggleClass('horizontal');
         $(this).children().toggleClass('fa-indent fa-outdent');
         layout.init();
-        tabsWrapper.update(); // 顶部导航
+        layout.tabsWrapper.update(); // 顶部导航
     });
     /** ---------- E-收放左侧导航按钮 ---------- */
 
